@@ -1,0 +1,109 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="../static/jquery-3.1.1.min.js"></script>
+    <style>
+        .green{
+            color:green;
+        }
+    </style>
+</head>
+
+<body>
+<header class="w3-display-container w3-content" style="max-width:1700px">
+    <img class="w3-image" src="{% static 'header2.jpg' %}">
+    <div class="w3-display-middle w3-padding-small w3-border w3-wide w3-text-light-grey w3-center">
+
+        <h5 class="w3-hide-medium w3-hide-small">To Log In, Click On Your Name</h5>
+    </div>
+    <!-- Navbar (placed at the bottom of the header image) -->
+    <ul class="w3-navbar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-5px">
+        <li><a href="Main.html">Main Page</a></li>
+    </ul>
+</header>
+<body>
+<br></br>
+<div align="center">
+
+    <!-- Behnam Rahmati-->
+    {% for m in members %}
+        {% if m.is_logedin %}
+            <button id="{{ m.id }}" type="button" class="member-button green">{{ m.name }}</button>
+        {% else %}
+            <button id="{{ m.id }}" type="button" class="member-button">{{ m.name }}</button>
+        {% endif %}
+    {% endfor %}
+    <!-- Ali Alirezaei-->
+    {#			<button type="button" onclick="ShowLog(1); LogSaver(1);">Alirezaei</button>		#}
+    {#	<!-- Hoda Aghaei-->#}
+    {#			<button type="button" onclick="ShowLog(2); LogSaver(2);">Aghaei</button>#}
+    {#	<!-- Dr. Nasihatkon-->#}
+    {#			<button type="button" onclick="ShowLog(3); LogSaver(3);">Dr. Nasihatkon</button>#}
+    {#	<br></br>#}
+    {#	<!-- Mohammad Mahdi Kiani-->#}
+    {#			<button type="button" onclick="ShowLog(4); LogSaver(4);">Kiani</button>#}
+    {#	<!-- Aein Rezaei-->#}
+    {#			<button type="button" onclick="ShowLog(5); LogSaver(5);">Rezaei</button>#}
+    {#	<!-- Mitra Hekmat-->#}
+    {#			<button type="button" onclick="ShowLog(6); LogSaver(6);">Hekmat</button>#}
+    {#	<!-- Zahra Mousavi-->#}
+    {#			<button type="button" onclick="ShowLog(7); LogSaver(7);">Mousavi</button>#}
+    {#	<br></br>#}
+    {#	<!-- Farnaz Heidari-->#}
+    {#			<button type="button" onclick="ShowLog(8); LogSaver(8);">Heidari</button>#}
+    {#	<!-- Rahil Gholamipoor-->#}
+    {#			<button type="button" onclick="ShowLog(9); LogSaver(9);">Gholamipoor</button>#}
+    {#	<!-- Vahid Geraei-->#}
+    {#			<button type="button" onclick="ShowLog(10); LogSaver(10);">Geraei</button>#}
+    {#	<!-- Dr. Masoudi-->#}
+    {#			<button type="button" onclick="ShowLog(11); LogSaver(11);">Dr. Masoudi</button>#}
+    {#	<br></br>#}
+    {#	<!-- Parnian Kassraie-->#}
+    {#			<button type="button" onclick="ShowLog(12); LogSaver(12);">Kassraie</button>#}
+    {#	<!-- Prof. Aghajan-->#}
+    {#			<button type="button" onclick="ShowLog(13); LogSaver(13);">Prof. Aghajan</button>#}
+
+</div>
+<script>
+    var users = [ "Rahmati","Alirezaei", "Aghaei", "Dr. Nasihatkon", "Kiani", "Rezaei", "Hekmat", "Mousavi", "Heidari", "Gholamipoor", "Geraei", "Dr. Masoudi","Kassraie","Prof. Aghajan"];
+    function ShowLog(userid){
+        var d = new Date();
+        document.getElementById("result1").innerHTML = users[userid];
+        document.getElementById("result2").innerHTML = d;
+    }
+
+
+    $(".member-button").click(function(){
+        var btn = $(this)
+        var user_id = $(this).attr('id');
+        $.ajax({
+            url: '/login/',
+            type: 'post',
+            data: 'data=' + user_id
+        }).done(function(){
+            $(btn).toggleClass("green");
+        });
+    });
+
+</script>
+
+<br></br>
+
+<footer class="w3-display-container w3-content" style="max-width:1700px">
+    <img class="w3-image" src="{% static 'footer.jpg'%}">
+    <div align="center" class="w3-display-middle w3-padding-small w3-border w3-wide w3-text-light-grey w3-center">
+        <p>Logged In as:</p>
+        <p id="result1"></p>
+        <p>Date & Time:</p>
+        <p id="result2"></p>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
