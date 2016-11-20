@@ -9,12 +9,12 @@ class Sensor(models.Model):
     data = models.CharField(max_length=10, null=True, blank=True, default=0)
 
     Sensors = (
-        (Tempreture, 'TMP'),
-        (Humidity, 'HUM'),
-        (Door_status, 'DST'),
-        (Window_status, 'WST'),
-        (PIR, 'PIR'),
-        (Luminance,'LUM')
+        ('TMP', 'TMP'),
+        ('HUM', 'HUM'),
+        ('DST', 'DST'),
+        ('WST', 'WST'),
+        ('PIR', 'PIR'),
+        ('LUM','LUM')
     )
     name = models.CharField(max_length=10, choices=Sensors)
 
