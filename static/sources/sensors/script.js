@@ -58,7 +58,7 @@ function doStuff(){
 
 
 $(document).ready( function() {
-  doStuff();
+  // doStuff();
 
   $('.subMenu').smint({
     'scrollSpeed' : 1000

@@ -16,9 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from sensor_network.views import view_home
+from sensor_network.views import *
+from sensor_network.recieve_data import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^sensors', view_home),
+    url(r'^change_number/(?P<num>[0-9]{2})', change_number),
 ]
+
+import subprocess
+subprocess.Popen(["python", "sensor_network/recieve_data.py"])
