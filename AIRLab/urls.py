@@ -21,8 +21,8 @@ from sensor_network.recieve_data import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^sensors', view_home),
-    url(r'^change_number/(?P<num>[0-9]{2})', change_number),
+    url(r'^sensors/$', view_home),
+    url(r'^sensors/change_number/$', save_test),
 ]
 
 import subprocess

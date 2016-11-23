@@ -19,3 +19,4 @@ class Sensor(models.Model):
     name = models.CharField(max_length=10, choices=Sensors)
 
     time = models.DateTimeField(auto_now_add=True, blank=True)
+

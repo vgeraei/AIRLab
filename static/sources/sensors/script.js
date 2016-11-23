@@ -21,26 +21,16 @@ $(function() {
   });
 });
 
-function changeNumber(num){
+function changeNumber(){
+  var num = $('.numberChange').val();
+  console.log(num);
   $.ajax({
-    url: staticAddr + "change/" + num.toString(),
-    success: function (data) {
-      console.log("Change was successful");
-    },
+    type: 'post',
+    url: '/sensors/change_number/' //+ num.toString()
   });
 }
 
 function doStuff(){
-  //var currentdate = new Date();
-  //var time = currentdate.getHours() + ":"
-  //+ currentdate.getMinutes() + ":"
-  //+ currentdate.getSeconds();
-  //var date = currentdate.getDate() + "/"
-  //+ (currentdate.getMonth()+1)  + "/"
-  //+ currentdate.getFullYear();
-
-  //$("#cal").html('<img src="images/cal.png" id="calImg">'+date);
-  //$("#clock").html('<img src="images/clock.png" id="clockImg">'+time);
   $.ajax({
     url:"http://172.20.27.94:8000/api/detail",
     dataType: 'json',
@@ -59,6 +49,7 @@ function doStuff(){
 
 $(document).ready( function() {
   // doStuff();
+  $('.numberChangeButton').on('click', changeNumber);
 
   $('.subMenu').smint({
     'scrollSpeed' : 1000
@@ -80,77 +71,75 @@ $(document).ready( function() {
     }
   }).data('easyTicker');
 
-});
-
-$(function () { $('.tooltip-hide').tooltip('hide');});
 
 
+  $(function () { $('.tooltip-hide').tooltip('hide');});
 
-// $(document).ready(function(){
-//   $('.changeNumberButton').on('click', );
 
 
 // Portfolio
-var data = {
-  labels: [
-    "23-24°C",
-    "24-25°C",
-    "25-26°C"
-  ],
-  datasets: [
-    {
-      data: [33, 45, 22],
-      backgroundColor: [
-        "#FF6384",
-        "#36A2EB",
-        "#FFCE56"
-      ],
-      hoverBackgroundColor: [
-        "#FF6384",
-        "#36A2EB",
-        "#FFCE56"
-      ]
-    }]
-};
+  var data = {
+    labels: [
+      "23-24°C",
+      "24-25°C",
+      "25-26°C"
+    ],
+    datasets: [
+      {
+        data: [33, 45, 22],
+        backgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56"
+        ],
+        hoverBackgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56"
+        ]
+      }]
+  };
 
-var ctx = document.getElementById("myChart");
+  var ctx = document.getElementById("myChart");
 
-var myDoughnutChart = new Chart(ctx, {
-  type: 'doughnut',
-  data: data,
-  animation:{
-    animateScale:true
-  }
-});
+  var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    animation:{
+      animateScale:true
+    }
+  });
 
-var $container = $('.portfolioContainer');
-$container.isotope({
-  filter: '*',
-  animationOptions: {
-    duration: 750,
-    easing: 'linear',
-    queue: false
-  }
-});
-
-$('.portfolioFilter a').click(function(){
-  $('.portfolioFilter .current').removeClass('current');
-  $(this).addClass('current');
-
-  var selector = $(this).attr('data-filter');
+  var $container = $('.portfolioContainer');
   $container.isotope({
-    filter: selector,
+    filter: '*',
     animationOptions: {
       duration: 750,
       easing: 'linear',
       queue: false
     }
   });
-  return false;
 
+  $('.portfolioFilter a').click(function(){
+    $('.portfolioFilter .current').removeClass('current');
+    $(this).addClass('current');
+
+    var selector = $(this).attr('data-filter');
+    $container.isotope({
+      filter: selector,
+      animationOptions: {
+        duration: 750,
+        easing: 'linear',
+        queue: false
+      }
+    });
+    return false;
+
+  });
+
+  $(".group2").colorbox({rel:'group2', transition:"fade"});
+
+
+  $('.carousel').carousel();
 });
 
-$(".group2").colorbox({rel:'group2', transition:"fade"});
-
-
-$('.carousel').carousel();
