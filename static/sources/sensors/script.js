@@ -30,9 +30,9 @@ function changeNumber(){
   });
 }
 
-function doStuff(){
+function load_realtime_data(){
   $.ajax({
-    url:"http://172.20.27.94:8000/api/detail",
+    url:'/sensors/load_realtime/',
     dataType: 'json',
     cache: false,
     success: function (data) {
@@ -48,7 +48,7 @@ function doStuff(){
 
 
 $(document).ready( function() {
-  // doStuff();
+  load_realtime_data();
   $('.numberChangeButton').on('click', changeNumber);
 
   $('.subMenu').smint({

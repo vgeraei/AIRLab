@@ -6,13 +6,12 @@ django.setup()
 ####### So we can import models
 
 from sensor_network.models import *
+import json
 import serial
 import time
-
-
 from xbee import XBee, ZigBee
 
-
+realtime_data={'TMP':0,'LIG':0,'HUM':0,'NUM':0,'MAG':0}
 temp = 0
 light = 0
 number = 0
@@ -51,6 +50,7 @@ def read_sensors(resp):
             value = item
             my_object = Sensor.objects.create(data=value, name=word)
             my_object.save()
+            realtime_data[word] = value
 
         counter = counter + 1
 

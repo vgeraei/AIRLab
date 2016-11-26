@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from sensor_network.models import *
 from django.views.decorators.csrf import csrf_exempt
+import sensor_network.recieve_data
+import json
 
 
 
@@ -21,3 +23,10 @@ def save_test(request):
         my_object = Sensor.objects.create(data=4, name='lum')
         my_object.save()
         return HttpResponse(status=200)
+
+@csrf_exempt
+def load_realtime_data(request):
+    if request.method == "POST":
+        print("request realtime data:")
+        realtime_json = json.dumps(sensor_network.recieve_data.realtime_data)
+        return HttpResponse(realtime_json, content_type='application/json')
