@@ -57,6 +57,7 @@ def read_sensors(resp):
 
 
 def main_loop():
+    print("main loop is runnign")
     PORT = '/dev/ttyUSB'
     BAUD_RATE = 9600
     data_dict = {'TMP': 0, 'LIG': 0, 'HUM': 0, 'NUM': 0, 'MAG': 0}
