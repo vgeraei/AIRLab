@@ -33,6 +33,7 @@ function changeNumber(){
 function load_realtime_data(){
   $.ajax({
     url:'/sensors/load_realtime/',
+    type: 'post',
     dataType: 'json',
     cache: false,
     success: function (data) {
