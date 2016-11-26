@@ -1,6 +1,7 @@
 import sys
 
 ####### So we can import models
+import AIRLab.settings
 import django
 django.setup()
 ####### So we can import models
