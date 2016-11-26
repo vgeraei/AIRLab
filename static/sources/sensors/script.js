@@ -40,8 +40,8 @@ function load_realtime_data(){
       $("#temp").html(data['TMP']);
       $("#hum").html(data['HUM']);
       $("#number").html(data['NUM']);
-      $("#door_status").html(((data['MAG'])?("Open"):("Closed")));
-      $("#light").html(data['LIG']);
+      $("#door_status").html(((data['DST'])?("Open"):("Closed")));
+      $("#light").html(data['LUM']);
     },
   });
   setTimeout(load_realtime_data, 1000);

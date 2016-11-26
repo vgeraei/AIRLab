@@ -14,7 +14,8 @@ class Sensor(models.Model):
         ('DST', 'DST'),
         ('WST', 'WST'),
         ('PIR', 'PIR'),
-        ('LUM','LUM')
+        ('LUM','LUM'),
+        ('NUM', 'NUM'),
     )
     name = models.CharField(max_length=10, choices=Sensors)
 
