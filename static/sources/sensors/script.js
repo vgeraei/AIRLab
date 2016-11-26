@@ -43,7 +43,7 @@ function load_realtime_data(){
       $("#light").html(data['light']);
     },
   });
-  setTimeout(doStuff, 1000);
+  setTimeout(load_realtime_data, 1000);
 };
 
 
