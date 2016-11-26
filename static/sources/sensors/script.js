@@ -41,7 +41,7 @@ function load_realtime_data(){
       $("#hum").html(data['HUM']);
       $("#number").html(data['NUM']);
       $("#door_status").html(((data['MAG'])?("Open"):("Closed")));
-      $("#light").html(data['LUM']);
+      $("#light").html(data['LIG']);
     },
   });
   setTimeout(load_realtime_data, 1000);
