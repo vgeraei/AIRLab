@@ -37,11 +37,11 @@ function load_realtime_data(){
     dataType: 'json',
     cache: false,
     success: function (data) {
-      $("#temp").html(data['temp']);
-      $("#hum").html(data['hum']);
-      $("#number").html(data['number']);
-      $("#door_status").html(((data['door_state'])?("Open"):("Closed")));
-      $("#light").html(data['light']);
+      $("#temp").html(data['TMP']);
+      $("#hum").html(data['HUM']);
+      $("#number").html(data['NUM']);
+      $("#door_status").html(((data['MAG'])?("Open"):("Closed")));
+      $("#light").html(data['LUM']);
     },
   });
   setTimeout(load_realtime_data, 1000);
