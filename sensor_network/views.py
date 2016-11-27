@@ -27,6 +27,6 @@ def save_test(request):
 @csrf_exempt
 def load_realtime_data(request):
     if request.method == "POST":
-        print("request realtime data:")
+        # print("request realtime data:")
         realtime_json = json.dumps(sensor_network.recieve_data.realtime_data)
         return HttpResponse(realtime_json, content_type='application/json')

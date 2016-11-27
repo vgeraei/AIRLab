@@ -1,9 +1,9 @@
 import sys
 
-####### So we can import models
-import django
-django.setup()
-####### So we can import models
+# ####### So we can import models
+# import django
+# django.setup()
+# ####### So we can import models
 
 from sensor_network.models import *
 import json
@@ -11,7 +11,7 @@ import serial
 import time
 from xbee import XBee, ZigBee
 
-realtime_data={'TMP':0,'LUM':0,'HUM':0,'NUM':0,'DST':0}
+realtime_data={'TMP':23,'LUM':4.5,'HUM':3,'NUM':2,'DST':0}
 temp = 0
 light = 0
 number = 0
@@ -69,6 +69,7 @@ def main_loop():
             ser = serial.Serial(0, BAUD_RATE)
             break
         except:
+            print("inja")
             usb_counter = usb_counter + 1
 
     # Create API object
