@@ -70,7 +70,7 @@ def main_loop():
             ser = serial.Serial(0, BAUD_RATE)
             break
         except:
-            print("inja")
+            # print("inja")
             usb_counter = usb_counter + 1
 
     # Create API object
