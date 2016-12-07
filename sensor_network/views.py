@@ -5,6 +5,10 @@ from django.views.decorators.csrf import csrf_exempt
 import sensor_network.recieve_data
 import json
 
+# from .tasks import print_it
+# from celery import group
+
+
 
 
 # Create your views here.

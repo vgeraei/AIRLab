@@ -1,11 +1,12 @@
 import sys
+from AIRLab import settings
 
 # ####### So we can import models
-# import django
-# django.setup()
+import django
+django.setup()
 # ####### So we can import models
 
-from sensor_network.models import *
+# from sensor_network.models import *
 import json
 import serial
 import time
