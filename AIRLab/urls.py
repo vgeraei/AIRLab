@@ -27,4 +27,5 @@ urlpatterns = [
 ]
 
 import subprocess
+
 subprocess.Popen(["python", "sensor_network/recieve_data.py"])
