@@ -1,7 +1,7 @@
 import sys
 import sqlite3
 from datetime import datetime
-from AIRLab import settings
+
 
 # ####### So we can import models
 # import django
