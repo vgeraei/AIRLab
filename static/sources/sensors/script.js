@@ -37,7 +37,7 @@ function load_realtime_data(){
     dataType: 'json',
     cache: false,
     success: function (data) {
-      $("#temp").html(data['TMP']);
+      $("#temp").html(data['TMP']+'°C');
       $("#hum").html(data['HUM']);
       $("#number").html(data['NUM']);
       $("#door_status").html(((data['DST'])?("Open"):("Closed")));

@@ -1,527 +1,526 @@
-       {% load staticfiles %}
-        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-        <html xmlns="http://www.w3.org/1999/xhtml">
-        <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>iRoom</title>
-        	
-            <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-            
-            <!-- Latest compiled and minified CSS -->
-            <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-            
-            <!-- Optional theme -->
-            <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-            
-            <!-- Latest compiled and minified CSS -->
-        	<link rel="stylesheet" href="{% static 'css/sensors/style.css' %}">
-            <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-            <!-- <link rel="stylesheet/less" type="text/css" href="style.less" /> -->
-            
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>iRoom</title>
 
-        </head>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 
-        <body>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-        <div class="wrap ">
-        	<div class="section sTop">
-        		<div class="top-container">
-                    <div class="container">
-                        
-                        <div class="large-logo">
-                            <a href="#"><img src="{% static 'images/sensors/logo-large.png' %}" alt="logo" /></a>
-                        </div>
-                        
-                        <div class="vticker">
-                            <ul>
-                                <li>INVENT THE FUTURE</li>
-                                <li>TOUCH TOMORROW</li>
-                                <li>WITH SMART HOMES</li>
-                            </ul>
-                        </div>
-                        
-                        <!--<a href="#sTop" class="click-down"><i class="fa fa-chevron-circle-down"></i></a>-->
-                      <div class="" >  
-                        <ul class="nav nav-pills nav-justified">
-                          <!-- <li class="active"><a href="#sTop"><i class="fa fa-cog"></i>About</a></li> -->
-                          <!-- <li><a href="#s1"><i class="fa fa-users"></i>Team</a></li> -->
-                          <li><a href="#s3"><i class="fa fa-tachometer"></i><h  id="temp">24.3°C</h></a></li>
-                          <li><a href="#s2"><i class="fa fa-tint"></i><h id="hum">3</h></a></li>
-                          <li><a href="#s6"><i class="fa fa-users"></i><h id="number">2</h>
-                          </br>
-                          
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-                          <input type="number" name="new_num" min="0" max="20" class="numberChange">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'css/sensors/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <!-- <link rel="stylesheet/less" type="text/css" href="style.less" /> -->
 
-                        <button type="button" class="btn btn-info numberChangeButton">Change</button>
-                          
-                          </a></li>
-                          <li><a href="#s7"><i class="fa fa-key"></i><h id="door_status">Open</h></a></li>
-                          <li><a href="#s7"><i class="fa fa-lightbulb-o"></i><h id="light">4.4</h></a></li>
-                        </ul>
-                      </div>  
-                        
-                    </div>
-                    
-                </div><!-- /top-container -->
-                
-        	</div>
 
-        	<div class="subMenu" >
-            	<div class="container">
-                	<div class="row">
-                    	<div class="col-md-2 th-logo">
-                        	<a href="#sTop">
-                            	<img src="{% static 'images/sensors/logo.png' %}" alt="logo" />
-                            </a>
-                        </div>
-                        <div class="col-md-10">
-                        
-                                <!--<nav class="navbar navbar-default" role="navigation">
-                                  <div class="container-fluid">
-                                    <div class="navbar-header">
-                                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                      </button>
-                                      <a class="navbar-brand" href="#">Brand</a>
-                                    </div>
-                                
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                      <ul class="nav navbar-nav inner pull-right">
-                                        <li><a href="#about" class="subNavBtn">About Us</a></li>
-                                        <li><a href="#s2" class="subNavBtn">Our Work</a></li>
-                                        <li><a href="#s3" class="subNavBtn">Services</a></li>
-                                        <li><a href="#s4" class="subNavBtn">Testimonials</a></li>
-                                        <li><a href="#s5" class="subNavBtn">Pricing</a></li>
-                                        <li><a href="#s6" class="subNavBtn">Blog</a></li>
-                                        <li><a href="#s7" class="subNavBtn">Contact</a></li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </nav>-->
-                        
-                            <div class="inner pull-right">
-                                <a href="#about" class="subNavBtn">About Us</a> 
-                                <!-- <a href="#s2" class="subNavBtn">Our Work</a> -->
-                                <a href="#s3" class="subNavBtn">Services</a>
-                                <!-- <a href="#s4" class="subNavBtn">Testimonials</a> -->
-                                <!-- <a href="#s5" class="subNavBtn">Pricing</a> -->
-                                <!-- <a href="#s6" class="subNavBtn">Blog</a> -->
-                                <a href="#s7" class="subNavBtn">Contact</a>
-                            </div>
-                    	</div>
-                    </div><!-- row -->
+</head>
+
+<body>
+
+<div class="wrap ">
+    <div class="section sTop">
+        <div class="top-container">
+            <div class="container">
+
+                <div class="large-logo">
+                    <a href="#"><img src="{% static 'images/sensors/logo-large.png' %}" alt="logo" /></a>
                 </div>
-        	</div>
 
-        	<div class="section about" id="about">
-        		<div class="inner ">
-        			<div class="about-artical">
-                    	<h2>Creative Minds</h2>
-                        <p>Our team consists of three students whom are studying in Sharif University of Technology. Our field of study is Electrical Engineering and Computer Engineering which makes us a perfect combination to create a Smart automation.</p>
-                        
-                        <div class="creative-minds">
-                        	<div class="row-cm">
-                                <a class="col-cm" href="http://www.ce.sharif.edu/~geraeenejad">
-                                    <figure class="cm-item">
-                                        <img alt="" src="{% static 'images/sensors/c-1.jpg' %}">
-                                        <figcaption></figcaption>
-                                    </figure>
-                                    <h4 class="cm-title" data-animate="fadeInDown" style="">Vahid Geraeinejad</h4>
-                                    <p class="cm-descr">Web Developer/Designer - Gateway Programmer </p>
-                                </a>
-                                <div class="col-cm">
-                                    <figure class="cm-item">
-                                        <img alt="" src="{% static 'images/sensors/c-2.jpg' %}">
-                                        <figcaption></figcaption>
-                                    </figure>
-                                    <h4 class="cm-title" data-animate="fadeInDown" style="">Aein Rezaei</h4>
-                                    <p class="cm-descr">Electrical Engineer and Sensor Node expert</p>
-                                </div>
-                                <div class="col-cm">
-                                    <figure class="cm-item">
-                                        <img alt="" src="{% static 'images/sensors/c-3.jpg' %}">
-                                        <figcaption></figcaption>
-                                    </figure>
-                                    <h4 class="cm-title" data-animate="fadeInDown" style="">Mojtaba Rouhafzaeiyan</h4>
-                                    <p class="cm-descr">Android Developer</p>
-                                </div>
-                            </div>
-                        </div><!-- /creative-minds -->
-                        
-                        <!-- <div id="social-contect" class="social-contect">
-                        	<a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Dribbble"><i class="fa fa-dribbble"></i></a>
-                            <a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Linkedin"><i class="fa fa-linkedin"></i></a>
-                            <a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Google plus"><i class="fa fa-google-plus"></i></a>
-                            
-                        </div> -->
-                        
-                    </div><!-- /about-artical -->
-        		</div>
-                
-                <div class="about-f">
-                	
-                    <div class="container">
-                	
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="about-us-f">
-                                    <h3>About Us</h3>
-                                    <p>This project consist of a network of integrated sensors which gather data from the environment. This data enables us provide the user with all sorts of usefull application such as reducing energy consumption, statistical data and adapting to human behaviour. </p>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            	<div class="about-us-f">
-                                		<h3>Our Goals</h3>
-                                        
-                                        <div class="panel-group" id="accordion">
-                                          <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                              <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href=".collapseOne">
-                                                  Energy Consumption
-                                                </a>
-                                              </h4>
-                                            </div>
-                                            <div id="" class="collapseOne panel-collapse collapse in">
-                                              <div class="panel-body">
-                                                We aim to reduce the energy consumption of the room in any way possible. More than 60% of energy consumption comes from the lighting, heating and cooling which can be drastically reduced in smart environment. 
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                              <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href=".collapseTwo">
-                                                  Data Collection
-                                                </a>
-                                              </h4>
-                                            </div>
-                                            <div id="" class="collapseTwo panel-collapse collapse">
-                                              <div class="panel-body">
-                                                The Data collected by this project can either be used for the reaserch purposes or economical reasons.
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                              <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href=".collapseThree">
-                                                  Machine Learning
-                                                </a>
-                                              </h4>
-                                            </div>
-                                            <div id="" class="collapseThree panel-collapse collapse">
-                                              <div class="panel-body">
-                                                Machine Learning is the heart and the future of smart environments.
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    
-                                </div><!-- /.about-us-f -->
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            	<div class="about-us-f">
-                                		<h3>statistics</h3>
-                                        <p>A sample chart of temperature statistics.</p>
-                                		<canvas id="myChart" ></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    
-                    </div><!-- /container -->
-                    
-                </div><!-- /about-f -->
-                
-        	</div>
-
-        	
-
-
-            <div class="transparent-bg">
-            	<div class="bcg">
-                	<div class="bcg-bg">
-                    	<!-- <h1>"You only live once, but if you do it right, once is enough."</h1>
-                        <h6>Mae West</h6> -->
-                    </div>
+                <div class="vticker">
+                    <ul>
+                        <li>INVENT THE FUTURE</li>
+                        <li>TOUCH TOMORROW</li>
+                        <li>WITH SMART HOMES</li>
+                    </ul>
                 </div>
-            </div><!-- /transparent-bg -->
-            
 
-            <div class="section s3" id="s3">
-                <div class="inner">
-                        <div class="container">
-                        
-                            <div class="services">
-                                
-                                <div class="services-tops">
-                                    
-                                    <h2>Our Services</h2>
-                                    
-                                    <p>Through this service you can monitor the condition of your room and be aware of the statistics at any time. </p>
-                                    
-                                </div><!-- /services-tops -->
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <div class="services-box">
-                                            <i class="fa fa-cog"></i>
-                                            <h6>Conveniece</h6>
-                                            
-                                            <p>Our main goal is to ensure that the user is in the most desirable condition possible. We can achieve this by adapt to users' habit and set the environment the users' preferred prefrences.  </p>
-                                            
-                                        </div><!-- /services-box -->
-                                    </div>
-                                    
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <div class="services-box">
-                                            <i class="fa fa-video-camera"></i>
-                                            <h6>Monitoring</h6>
-                                            
-                                            <p>You can be aware of every detailed information that is happening around you. Distance is not a problem and you can also access the data in the past since our system is equipped with a powerful database.</p>
-                                            
-                                        </div><!-- /services-box -->
-                                    </div>
-                                    
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <div class="services-box">
-                                            <i class="fa fa-mobile"></i>
-                                            <h6>Controller</h6>
-                                            
-                                            <p>Our Android app enables you to control your room through internet at any distance and anytime. You can also monitor your room via any device equipped with web service. </p>
-                                        </div><!-- /services-box -->
-                                    </div>
-                                
-                                </div>
-                                
-                            </div><!-- /services -->
-                        
-                        </div>
+                <!--<a href="#sTop" class="click-down"><i class="fa fa-chevron-circle-down"></i></a>-->
+                <div class="realtimeData">
+                    <ul class="nav nav-pills nav-justified">
+                        <!-- <li class="active"><a href="#sTop"><i class="fa fa-cog"></i>About</a></li> -->
+                        <!-- <li><a href="#s1"><i class="fa fa-users"></i>Team</a></li> -->
+                        <li><a><i class="fa fa-tachometer"></i><h  id="temp">24.3°C</h></a></li>
+                        <li><a><i class="fa fa-tint"></i><h id="hum">3</h></a></li>
+                        <li><a><i class="fa fa-users"></i><h id="number">2</h>
+                            </br>
+
+
+                            <input type="number" name="new_num" min="0" max="20" class="numberChange">
+                            <button type="button" class="btn btn-info numberChangeButton">Change</button></a></li>
+
+                        <li><a><i class="fa fa-key"></i><h id="door_status">Open</h></a></li>
+                        <li><a><i class="fa fa-lightbulb-o"></i><h id="light">4.4</h></a></li>
+                        <li><a><i class="fa fa-home"></i><h id="pir">The Room is not empty.</h></a></li>
+                    </ul>
                 </div>
+
             </div>
 
-        	<!-- <div class="section s5" id="s5">
-        		<div class="inner">
-        			<div class="pricing">
-                    	<div class="container">
-                            <div class="pricing-header">
-                                <h2>Our Pricing</h2>
-                                <p>We are team of creative photographers. We passionate with photography and other creative things. If you are looking professional photography theme with endless possibilities, you come in right place. This template consist of well-organized layers. Tons of features waiting for you.</p>
-                            </div>
-                            
-                            <div class="row">
-                            	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                	<div class="pricing-box">
-                                    	<div class="pricing-head">
-                                        	<h1 class="price">$500</h1>
-                                            <h4>Standard</h4>
-                                        </div>
-                                        <div class="pricing-row">
-                                        	Creative Idea
-                                        </div>
-                                        <div class="pricing-row">
-                                        	<strong>24/7</strong>TECH SUPPORT
-                                        </div>
-                                        <div class="pricing-row">
-                                        	<strong>5</strong>PROJECTS
-                                        </div>
-                                        <div class="pricing-row">
-                                        	<strong>1GB</strong>STORAGE
-                                        </div>
-                                        <div class="pricing-row">
-                                        	UNLIMITED USERS
-                                        </div>
-                                        <div class="pricing-row last">
-                                        	<a href="#" class="submit">Buy It Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                	<div class="pricing-box">
-                                    	<div class="pricing-head business">
-                                        	<h1 class="price">$500</h1>
-                                            <h4>Standard</h4>
-                                        </div>
-                                        <div class="pricing-row">
-                                        	Creative Idea
-                                        </div>
-                                        <div class="pricing-row">
-                                        	<strong>24/7</strong>TECH SUPPORT
-                                        </div>
-                                        <div class="pricing-row">
-                                        	<strong>5</strong>PROJECTS
-                                        </div>
-                                        <div class="pricing-row">
-                                        	<strong>1GB</strong>STORAGE
-                                        </div>
-                                        <div class="pricing-row">
-                                        	UNLIMITED USERS
-                                        </div>
-                                        <div class="pricing-row last">
-                                        	<a href="#" class="submit">Buy It Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                	<div class="pricing-box">
-                                    	<div class="pricing-head">
-                                        	<h1 class="price">$500</h1>
-                                            <h4>Standard</h4>
-                                        </div>
-                                        <div class="pricing-row">
-                                        	Creative Idea
-                                        </div>
-                                        <div class="pricing-row">
-                                        	<strong>24/7</strong>TECH SUPPORT
-                                        </div>
-                                        <div class="pricing-row">
-                                        	<strong>5</strong>PROJECTS
-                                        </div>
-                                        <div class="pricing-row">
-                                        	<strong>1GB</strong>STORAGE
-                                        </div>
-                                        <div class="pricing-row">
-                                        	UNLIMITED USERS
-                                        </div>
-                                        <div class="pricing-row last">
-                                        	<a href="#" class="submit">Buy It Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
+        </div><!-- /top-container -->
+
+    </div>
+
+    <div class="subMenu" >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 th-logo">
+                    <a href="#sTop">
+                        <img src="{% static 'images/sensors/logo.png' %}" alt="logo" />
+                    </a>
+                </div>
+                <div class="col-md-10">
+
+                    <!--<nav class="navbar navbar-default" role="navigation">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand" href="#">Brand</a>
                         </div>
-                    </div><!--  /pricing  -->
-        		</div>
-        	</div> 
-                  
-            <div class="section s7" id="s7">
-        		<div class="inner">
-                    <div class="transparent-bg">
-                        <div class="bcg">
-                            <div class="bcg-bg bcg-bg-blk">
-                            <div class="container">
-                                        <div class="contact">
-                                            
-                                            <h1>Contact Us</h1>
-                                            
-                                            <div class="row">
-                                            	
-                                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                                            
-                                                    <div class="contact-form">
-                                                        <form class="form-horizontal">
-                                                            <div class="row">
-                                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Name</label>
-                                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                                                      </div>
-                                                                </div>
-                                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Email address</label>
-                                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                                                      </div>
-                                                                </div>
-                                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Subject</label>
-                                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                                                      </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputEmail1">Massage</label>
-                                                                        <textarea class="form-control" rows="3"></textarea>
-                                                                      </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="control-group">
-                                                            <div class="controls">
-                                                            <button type="button" class="btn btn-default btn-lg">Send</button>
-                                                            </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                
-                                                </div>
-                                                
-                                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                                	
-                                                    	<div class="address">
-                                                            <h3>Address:</h3>
-                                                            <i class="icons-marker icon-home"></i>
-                                                            <div class="contact-address">
-                                                                Room 409, Technological Services Building <br>
-                                                                Sharif University of Technology, <br>
-                                                                Tehran, Iran.
-                                                            </div>
-                                                        </div><!--End address-->
-                                                        
-                                                        <div class="address">
-                                                            <h3>Phones:</h3>
-                                                            <div class="phone">
-                                                                <i class="icon-volume-down"></i>
-                                                                <div class="contact-address">
-                                                                    Vahid Geraeinejad +98 912 701 6183
-                                                                </div>
-                                                            </div>
-                                                            <div class="phone">
-                                                                <i class="icon-print"></i>
-                                                                <div class="contact-address">
-                                                                    Aein Rezaei +98 938 654 5110 
-                                                                </div>
-                                                            </div>
-                                                        </div><!--End address-->
-                                                        
-                                                        <div class="address">
-                                                            <h3>Email:</h3>
-                                                            <div class="phone">
-                                                                <i class="icon-envelope"></i>
-                                                                <div class="email">
-                                                                    <a href="#">vahidgn@gmail.com</a>
-                                                                </div>
-                                                            </div>
-                                                        </div><!--End address-->
-                                                    
-                                                </div>
-                                                
-                                             </div><!-- /row -->   
-                                              
-                                                
-                                        </div>
-                                
-                                </div>
-                                
-                            </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                          <ul class="nav navbar-nav inner pull-right">
+                            <li><a href="#about" class="subNavBtn">About Us</a></li>
+                            <li><a href="#s2" class="subNavBtn">Our Work</a></li>
+                            <li><a href="#s3" class="subNavBtn">Services</a></li>
+                            <li><a href="#s4" class="subNavBtn">Testimonials</a></li>
+                            <li><a href="#s5" class="subNavBtn">Pricing</a></li>
+                            <li><a href="#s6" class="subNavBtn">Blog</a></li>
+                            <li><a href="#s7" class="subNavBtn">Contact</a></li>
+                          </ul>
                         </div>
-                    </div><!-- /transparent-bg -->
-            	</div>
-            </div>
-        	
+                      </div>
+                    </nav>-->
+
+                    <div class="inner pull-right">
+                        <a href="#about" class="subNavBtn">About Us</a>
+                        <!-- <a href="#s2" class="subNavBtn">Our Work</a> -->
+                        <a href="#s3" class="subNavBtn">Services</a>
+                        <!-- <a href="#s4" class="subNavBtn">Testimonials</a> -->
+                        <!-- <a href="#s5" class="subNavBtn">Pricing</a> -->
+                        <!-- <a href="#s6" class="subNavBtn">Blog</a> -->
+                        <a href="#s7" class="subNavBtn">Contact</a>
+                    </div>
+                </div>
+            </div><!-- row -->
         </div>
-            
-            
-        </body>
+    </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="{% static 'sources/bootstrap.min.js' %}" type="text/javascript" ></script>
-        <script src="{% static 'sources/jquery.smint.js' %}" type="text/javascript" ></script>
-        <script type="text/javascript" src="{% static 'sources/jquery.easing.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'sources/jquery.easy-ticker.js' %}"></script>
-        <!-- // <script src="less.js" type="text/javascript"></script> -->
-        <script src="{% static 'sources/isotop.js' %}"></script>
-        <script src="{% static 'sources/jquery.colorbox.js' %}"></script>
-        <script type="text/javascript" src="{% static 'sources/Chart.js' %}"></script>
-       <script type="text/javascript" src="{% static 'sources/sensors/script.js' %}"></script>
-        </html>
+    <div class="section about" id="about">
+        <div class="inner ">
+            <div class="about-artical">
+                <h2>Creative Minds</h2>
+                <p>Our team consists of three students whom are studying in Sharif University of Technology. Our field of study is Electrical Engineering and Computer Engineering which makes us a perfect combination to create a Smart automation.</p>
+
+                <div class="creative-minds">
+                    <div class="row-cm">
+                        <a class="col-cm" href="http://www.ce.sharif.edu/~geraeenejad">
+                            <figure class="cm-item">
+                                <img alt="" src="{% static 'images/sensors/c-1.jpg' %}">
+                                <figcaption></figcaption>
+                            </figure>
+                            <h4 class="cm-title" data-animate="fadeInDown" style="">Vahid Geraeinejad</h4>
+                            <p class="cm-descr">Web Developer/Designer - Gateway Programmer </p>
+                        </a>
+                        <div class="col-cm">
+                            <figure class="cm-item">
+                                <img alt="" src="{% static 'images/sensors/c-2.jpg' %}">
+                                <figcaption></figcaption>
+                            </figure>
+                            <h4 class="cm-title" data-animate="fadeInDown" style="">Aein Rezaei</h4>
+                            <p class="cm-descr">Electrical Engineer and Sensor Node expert</p>
+                        </div>
+                        <div class="col-cm">
+                            <figure class="cm-item">
+                                <img alt="" src="{% static 'images/sensors/c-3.jpg' %}">
+                                <figcaption></figcaption>
+                            </figure>
+                            <h4 class="cm-title" data-animate="fadeInDown" style="">Mojtaba Rouhafzaeiyan</h4>
+                            <p class="cm-descr">Android Developer</p>
+                        </div>
+                    </div>
+                </div><!-- /creative-minds -->
+
+                <!-- <div id="social-contect" class="social-contect">
+                    <a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Dribbble"><i class="fa fa-dribbble"></i></a>
+                    <a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                    <a href="#" class="tooltip-hide" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Google plus"><i class="fa fa-google-plus"></i></a>
+
+                </div> -->
+
+            </div><!-- /about-artical -->
+        </div>
+
+        <div class="about-f">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="about-us-f">
+                            <h3>About Us</h3>
+                            <p>This project consist of a network of integrated sensors which gather data from the environment. This data enables us provide the user with all sorts of usefull application such as reducing energy consumption, statistical data and adapting to human behaviour. </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="about-us-f">
+                            <h3>Our Goals</h3>
+
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href=".collapseOne">
+                                                Energy Consumption
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="" class="collapseOne panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            We aim to reduce the energy consumption of the room in any way possible. More than 60% of energy consumption comes from the lighting, heating and cooling which can be drastically reduced in smart environment.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href=".collapseTwo">
+                                                Data Collection
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="" class="collapseTwo panel-collapse collapse">
+                                        <div class="panel-body">
+                                            The Data collected by this project can either be used for the reaserch purposes or economical reasons.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href=".collapseThree">
+                                                Machine Learning
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="" class="collapseThree panel-collapse collapse">
+                                        <div class="panel-body">
+                                            Machine Learning is the heart and the future of smart environments.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- /.about-us-f -->
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="about-us-f">
+                            <h3>statistics</h3>
+                            <p>A sample chart of temperature statistics.</p>
+                            <canvas id="myChart" ></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /container -->
+
+        </div><!-- /about-f -->
+
+    </div>
+
+
+
+
+    <div class="transparent-bg">
+        <div class="bcg">
+            <div class="bcg-bg">
+                <!-- <h1>"You only live once, but if you do it right, once is enough."</h1>
+                <h6>Mae West</h6> -->
+            </div>
+        </div>
+    </div><!-- /transparent-bg -->
+
+
+    <div class="section s3" id="s3">
+        <div class="inner">
+            <div class="container">
+
+                <div class="services">
+
+                    <div class="services-tops">
+
+                        <h2>Our Services</h2>
+
+                        <p>Through this service you can monitor the condition of your room and be aware of the statistics at any time. </p>
+
+                    </div><!-- /services-tops -->
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="services-box">
+                                <i class="fa fa-cog"></i>
+                                <h6>Conveniece</h6>
+
+                                <p>Our main goal is to ensure that the user is in the most desirable condition possible. We can achieve this by adapt to users' habit and set the environment the users' preferred prefrences.  </p>
+
+                            </div><!-- /services-box -->
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="services-box">
+                                <i class="fa fa-video-camera"></i>
+                                <h6>Monitoring</h6>
+
+                                <p>You can be aware of every detailed information that is happening around you. Distance is not a problem and you can also access the data in the past since our system is equipped with a powerful database.</p>
+
+                            </div><!-- /services-box -->
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="services-box">
+                                <i class="fa fa-mobile"></i>
+                                <h6>Controller</h6>
+
+                                <p>Our Android app enables you to control your room through internet at any distance and anytime. You can also monitor your room via any device equipped with web service. </p>
+                            </div><!-- /services-box -->
+                        </div>
+
+                    </div>
+
+                </div><!-- /services -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="section s5" id="s5">
+        <div class="inner">
+            <div class="pricing">
+                <div class="container">
+                    <div class="pricing-header">
+                        <h2>Our Pricing</h2>
+                        <p>We are team of creative photographers. We passionate with photography and other creative things. If you are looking professional photography theme with endless possibilities, you come in right place. This template consist of well-organized layers. Tons of features waiting for you.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="pricing-box">
+                                <div class="pricing-head">
+                                    <h1 class="price">$500</h1>
+                                    <h4>Standard</h4>
+                                </div>
+                                <div class="pricing-row">
+                                    Creative Idea
+                                </div>
+                                <div class="pricing-row">
+                                    <strong>24/7</strong>TECH SUPPORT
+                                </div>
+                                <div class="pricing-row">
+                                    <strong>5</strong>PROJECTS
+                                </div>
+                                <div class="pricing-row">
+                                    <strong>1GB</strong>STORAGE
+                                </div>
+                                <div class="pricing-row">
+                                    UNLIMITED USERS
+                                </div>
+                                <div class="pricing-row last">
+                                    <a href="#" class="submit">Buy It Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="pricing-box">
+                                <div class="pricing-head business">
+                                    <h1 class="price">$500</h1>
+                                    <h4>Standard</h4>
+                                </div>
+                                <div class="pricing-row">
+                                    Creative Idea
+                                </div>
+                                <div class="pricing-row">
+                                    <strong>24/7</strong>TECH SUPPORT
+                                </div>
+                                <div class="pricing-row">
+                                    <strong>5</strong>PROJECTS
+                                </div>
+                                <div class="pricing-row">
+                                    <strong>1GB</strong>STORAGE
+                                </div>
+                                <div class="pricing-row">
+                                    UNLIMITED USERS
+                                </div>
+                                <div class="pricing-row last">
+                                    <a href="#" class="submit">Buy It Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <div class="pricing-box">
+                                <div class="pricing-head">
+                                    <h1 class="price">$500</h1>
+                                    <h4>Standard</h4>
+                                </div>
+                                <div class="pricing-row">
+                                    Creative Idea
+                                </div>
+                                <div class="pricing-row">
+                                    <strong>24/7</strong>TECH SUPPORT
+                                </div>
+                                <div class="pricing-row">
+                                    <strong>5</strong>PROJECTS
+                                </div>
+                                <div class="pricing-row">
+                                    <strong>1GB</strong>STORAGE
+                                </div>
+                                <div class="pricing-row">
+                                    UNLIMITED USERS
+                                </div>
+                                <div class="pricing-row last">
+                                    <a href="#" class="submit">Buy It Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!--  /pricing  -->
+</div>
+</div>
+
+<div class="section s7" id="s7">
+    <div class="inner">
+        <div class="transparent-bg">
+            <div class="bcg">
+                <div class="bcg-bg bcg-bg-blk">
+                    <div class="container">
+                        <div class="contact">
+
+                            <h1>Contact Us</h1>
+
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+
+                                    <div class="contact-form">
+                                        <form class="form-horizontal">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Name</label>
+                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Email address</label>
+                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Subject</label>
+                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Massage</label>
+                                                        <textarea class="form-control" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <div class="controls">
+                                                    <button type="button" class="btn btn-default btn-lg">Send</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                                    <div class="address">
+                                        <h3>Address:</h3>
+                                        <i class="icons-marker icon-home"></i>
+                                        <div class="contact-address">
+                                            Room 409, Technological Services Building <br>
+                                            Sharif University of Technology, <br>
+                                            Tehran, Iran.
+                                        </div>
+                                    </div><!--End address-->
+
+                                    <div class="address">
+                                        <h3>Phones:</h3>
+                                        <div class="phone">
+                                            <i class="icon-volume-down"></i>
+                                            <div class="contact-address">
+                                                Vahid Geraeinejad +98 912 701 6183
+                                            </div>
+                                        </div>
+                                        <div class="phone">
+                                            <i class="icon-print"></i>
+                                            <div class="contact-address">
+                                                Aein Rezaei +98 938 654 5110
+                                            </div>
+                                        </div>
+                                    </div><!--End address-->
+
+                                    <div class="address">
+                                        <h3>Email:</h3>
+                                        <div class="phone">
+                                            <i class="icon-envelope"></i>
+                                            <div class="email">
+                                                <a href="#">vahidgn@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </div><!--End address-->
+
+                                </div>
+
+                            </div><!-- /row -->
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- /transparent-bg -->
+    </div>
+</div>
+
+</div>
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'sources/bootstrap.min.js' %}" type="text/javascript" ></script>
+<script src="{% static 'sources/jquery.smint.js' %}" type="text/javascript" ></script>
+<script type="text/javascript" src="{% static 'sources/jquery.easing.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/jquery.easy-ticker.js' %}"></script>
+<!-- // <script src="less.js" type="text/javascript"></script> -->
+<script src="{% static 'sources/isotop.js' %}"></script>
+<script src="{% static 'sources/jquery.colorbox.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/Chart.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/sensors/script.js' %}"></script>
+</html>

@@ -1,9 +1,11 @@
 import sys
+import sqlite3
+from datetime import datetime
 from AIRLab import settings
 
 # ####### So we can import models
-import django
-django.setup()
+# import django
+# django.setup()
 # ####### So we can import models
 
 # from sensor_network.models import *
@@ -25,6 +27,16 @@ sensor_addr1='\x00\x13\xa2\x00\x40\xe9\x99\x36'
 sensor_addr2='\x00\x13\xa2\x00\x40\xe9\x97\xc1' #magnet
 sensor_addr3='\x00\x13\xa2\x00\x40\xe9\x97\xbe' #number
 
+
+conn = sqlite3.connect('../db.sqlite3')
+c = conn.cursor()
+
+try:
+    cursor = sqlite3.execute('SELECT max(id) FROM sensor_network_sensor')
+    max_id = cursor.fetchone()[0]
+    id_counter = max_id + 1
+except:
+    id_counter = 1
 
 def read_sensors(resp):
     print("reading sensors:")
@@ -49,8 +61,10 @@ def read_sensors(resp):
             word = item
         else:
             value = item
-            my_object = Sensor.objects.create(data=value, name=word)
-            my_object.save()
+            d = datetime.now()
+            c.execute('INSERT INTO sensor_network_sensor VALUES (?,?,?,?)', [id_counter, value, word, d])
+            id_counter = id_counter + 1
+            conn.commit()
             realtime_data[word] = value
 
         counter = counter + 1
