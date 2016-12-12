@@ -3,6 +3,7 @@ import sqlite3
 from datetime import datetime
 
 
+
 # ####### So we can import models
 # import django
 # django.setup()
@@ -66,7 +67,10 @@ def read_sensors(resp):
             id_counter = id_counter + 1
             conn.commit()
             realtime_data[word] = value
-            print(realtime_data)
+            realtime_json = json.dumps(realtime_data)
+            with open('realtime_data.json', 'w') as outfile:
+                json.dump(realtime_json, outfile)
+            #print(realtime_data)
 
         counter = counter + 1
 
