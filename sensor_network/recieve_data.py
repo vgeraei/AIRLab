@@ -78,10 +78,9 @@ def main_loop():
     data_dict = {'TMP': 0, 'LIG': 0, 'HUM': 0, 'NUM': 0, 'MAG': 0}
     # Open serial port
     usb_counter = 0
-    #ser = serial.Serial(0, BAUD_RATE)
     while True:
         try:
-            ser = serial.Serial(0, BAUD_RATE)
+            ser = serial.Serial(PORT+str(usb_counter), BAUD_RATE)
             print("connected")
             break
         except:
