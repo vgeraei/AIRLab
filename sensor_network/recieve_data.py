@@ -43,7 +43,7 @@ def read_sensors(resp):
     address = resp['source_addr_long']
     # if (address==temp_sensor_address or address==temp_sensor_address2) :
     # if(True):
-
+    global id_counter
     rf_data = resp['rf_data']
     rf_data = rf_data.replace('\x00', '')
     rf_data = rf_data.strip()
