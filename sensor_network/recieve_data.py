@@ -82,9 +82,10 @@ def main_loop():
     while True:
         try:
             ser = serial.Serial(0, BAUD_RATE)
+            print("connected")
             break
         except:
-            # print("inja")
+            print(usb_counter)
             usb_counter = usb_counter + 1
 
     # Create API object
