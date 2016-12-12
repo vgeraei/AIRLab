@@ -39,7 +39,7 @@ except:
     id_counter = 1
 
 def read_sensors(resp):
-    print("reading sensors:")
+    #print("reading sensors:")
     address = resp['source_addr_long']
     # if (address==temp_sensor_address or address==temp_sensor_address2) :
     # if(True):
@@ -48,7 +48,7 @@ def read_sensors(resp):
     rf_data = rf_data.replace('\x00', '')
     rf_data = rf_data.strip()
     # name = rf_data[0:3]
-    print((rf_data))
+    #print((rf_data))
     # print(rf_data[4:len(rf_data)])
 
     wordList = rf_data.split()
@@ -66,13 +66,14 @@ def read_sensors(resp):
             id_counter = id_counter + 1
             conn.commit()
             realtime_data[word] = value
+            print(realtime_data)
 
         counter = counter + 1
 
 
 
 def main_loop():
-    print("main loop is runnign")
+    print("Receive Data is Running")
     PORT = '/dev/ttyUSB'
     BAUD_RATE = 9600
     data_dict = {'TMP': 0, 'LIG': 0, 'HUM': 0, 'NUM': 0, 'MAG': 0}
@@ -81,10 +82,10 @@ def main_loop():
     while True:
         try:
             ser = serial.Serial(PORT+str(usb_counter), BAUD_RATE)
-            print("connected")
+            #print("connected")
             break
         except:
-            print(usb_counter)
+            #print(usb_counter)
             usb_counter = usb_counter + 1
 
     # Create API object
