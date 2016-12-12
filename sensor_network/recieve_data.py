@@ -49,7 +49,7 @@ def read_sensors(resp):
     rf_data = rf_data.replace('\x00', '')
     rf_data = rf_data.strip()
     # name = rf_data[0:3]
-    print((rf_data))
+    #print((rf_data))
     # print(rf_data[4:len(rf_data)])
 
     wordList = rf_data.split()
