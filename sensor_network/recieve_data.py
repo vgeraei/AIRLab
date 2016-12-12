@@ -28,7 +28,7 @@ sensor_addr2='\x00\x13\xa2\x00\x40\xe9\x97\xc1' #magnet
 sensor_addr3='\x00\x13\xa2\x00\x40\xe9\x97\xbe' #number
 
 
-conn = sqlite3.connect('../db.sqlite3')
+conn = sqlite3.connect('db.sqlite3')
 c = conn.cursor()
 
 try:
