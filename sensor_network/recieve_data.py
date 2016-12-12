@@ -32,7 +32,7 @@ conn = sqlite3.connect('db.sqlite3')
 c = conn.cursor()
 
 try:
-    cursor = sqlite3.execute('SELECT max(id) FROM sensor_network_sensor')
+    cursor = c.execute('SELECT max(id) FROM sensor_network_sensor')
     max_id = cursor.fetchone()[0]
     id_counter = max_id + 1
 except:
