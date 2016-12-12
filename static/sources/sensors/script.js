@@ -40,7 +40,7 @@ function load_realtime_data(){
       $("#temp").html(data['TMP']+'°C');
       $("#hum").html(data['HUM']);
       $("#number").html(data['NUM']);
-      $("#door_status").html(((data['DST'])?("Open"):("Closed")));
+      $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
       $("#light").html(data['LUM']);
     },
   });
