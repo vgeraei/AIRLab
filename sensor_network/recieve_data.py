@@ -63,14 +63,21 @@ def read_sensors(resp):
         else:
             value = item
             d = datetime.now()
-            c.execute('INSERT INTO sensor_network_sensor VALUES (?,?,?,?)', [id_counter, value, word, d])
+            try:
+                c.execute('INSERT INTO sensor_network_sensor VALUES (?,?,?,?)', [id_counter, value, word, d])
+            except:
+                print("Database error")
             print(id_counter)
             id_counter = id_counter + 1
             conn.commit()
             realtime_data[word] = value
             realtime_json = json.dumps(realtime_data)
-            with open('realtime_data.json', 'w') as outfile:
-                json.dump(realtime_json, outfile)
+
+            try:
+                with open('realtime_data.json', 'w') as outfile:
+                    json.dump(realtime_json, outfile)
+            except:
+                print("Opening JSON error")
             #print(realtime_data)
 
         counter = counter + 1
