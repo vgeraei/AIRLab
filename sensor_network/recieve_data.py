@@ -108,10 +108,11 @@ def main_loop():
         try:
             try:
                 response = zb.wait_read_frame()
+                read_sensors(response)
             except:
                 print("reading response error")
             # db = open('dataBase.txt','a')
-            read_sensors(response)
+
             #print(data_dict)
             #data = {
                 #"lum": data_dict['LIG'],
