@@ -106,7 +106,10 @@ def main_loop():
     # Continuously read and print packets
     while True:
         try:
-            response = zb.wait_read_frame()
+            try:
+                response = zb.wait_read_frame()
+            except:
+                print("reading response error")
             # db = open('dataBase.txt','a')
             read_sensors(response)
             #print(data_dict)
