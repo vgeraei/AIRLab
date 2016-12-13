@@ -64,6 +64,7 @@ def read_sensors(resp):
             value = item
             d = datetime.now()
             c.execute('INSERT INTO sensor_network_sensor VALUES (?,?,?,?)', [id_counter, value, word, d])
+            print(id_counter)
             id_counter = id_counter + 1
             conn.commit()
             realtime_data[word] = value
