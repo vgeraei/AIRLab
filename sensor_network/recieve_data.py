@@ -106,11 +106,8 @@ def main_loop():
     # Continuously read and print packets
     while True:
         try:
-            try:
-                response = zb.wait_read_frame()
-                read_sensors(response)
-            except:
-                print("reading response error")
+            response = zb.wait_read_frame()
+            read_sensors(response)
             # db = open('dataBase.txt','a')
 
             #print(data_dict)
@@ -136,8 +133,8 @@ def main_loop():
                 # db.close()
 
             ser.flushInput()  # Clear the input buffer once we read the data
-        except KeyboardInterrupt:
-            break
+        except:
+            print("reading response error")
 
     ser.close()
 
