@@ -19,11 +19,14 @@ from django.contrib import admin
 from sensor_network.views import *
 from sensor_network.recieve_data import *
 
+from login.views import *
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^sensors/$', view_home),
     url(r'^sensors/change_number/$', save_test),
     url(r'^sensors/load_realtime/$', load_realtime_data),
+    url(r'^face/$', login),
 ]
 
 import subprocess
