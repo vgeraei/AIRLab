@@ -15,7 +15,7 @@ import serial
 import time
 from xbee import XBee, ZigBee
 
-realtime_data={'TMP':"23",'LUM':"4.5",'HUM':"3",'NUM':"2",'DST':"0"}
+realtime_data={'TMP':"23",'LUM':"4.5",'HUM':"3",'NUM':"2",'DST':"0", "PIR":"0"}
 temp = 0
 light = 0
 number = 0

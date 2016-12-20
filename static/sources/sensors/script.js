@@ -42,6 +42,7 @@ function load_realtime_data(){
       $("#number").html(data['NUM']);
       $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
       $("#light").html(data['LUM']);
+      $("#pir").html(((data['PIR'])?("Someone in the room."):("The room empty.")));
     },
   });
   setTimeout(load_realtime_data, 1000);
