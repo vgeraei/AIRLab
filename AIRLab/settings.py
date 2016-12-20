@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sensor_network',
+    'login',
 ]
 
 MIDDLEWARE = [
