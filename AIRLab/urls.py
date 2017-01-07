@@ -26,9 +26,10 @@ urlpatterns = [
     url(r'^sensors/$', view_home),
     url(r'^sensors/change_number/$', save_test),
     url(r'^sensors/load_realtime/$', load_realtime_data),
+    url(r'^sensors/query/$', query_tmp),
     url(r'^face/$', login),
 ]
 
 import subprocess
 
-subprocess.Popen(["python", "sensor_network/recieve_data.py"])
+# subprocess.Popen(["python", "sensor_network/recieve_data.py"])

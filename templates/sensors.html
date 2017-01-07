@@ -48,11 +48,7 @@
                         <li><a><i class="fa fa-tachometer"></i><h  id="temp">24.3°C</h></a></li>
                         <li><a><i class="fa fa-tint"></i><h id="hum">3</h></a></li>
                         <li><a><i class="fa fa-users"></i><h id="number">2</h>
-                            </br>
-
-
-                            <input type="number" name="new_num" min="0" max="20" class="numberChange">
-                            <button type="button" class="btn btn-info numberChangeButton">Change</button></a></li>
+{#                            geButton">Change</button></a></li>#}
 
                         <li><a><i class="fa fa-key"></i><h id="door_status">Open</h></a></li>
                         <li><a><i class="fa fa-lightbulb-o"></i><h id="light">4.4</h></a></li>
@@ -103,8 +99,8 @@
                     </nav>-->
 
                     <div class="inner pull-right">
-                        <a href="#about" class="subNavBtn">About Us</a>
-                        <!-- <a href="#s2" class="subNavBtn">Our Work</a> -->
+                        <a href="#s1" class="subNavBtn">About Us</a>
+                        <a href="#s2" class="subNavBtn">Statistics</a>
                         <a href="#s3" class="subNavBtn">Services</a>
                         <!-- <a href="#s4" class="subNavBtn">Testimonials</a> -->
                         <!-- <a href="#s5" class="subNavBtn">Pricing</a> -->
@@ -116,7 +112,7 @@
         </div>
     </div>
 
-    <div class="section about" id="about">
+    <div class="section s1" id="s1">
         <div class="inner ">
             <div class="about-artical">
                 <h2>Creative Minds</h2>
@@ -240,9 +236,6 @@
 
     </div>
 
-
-
-
     <div class="transparent-bg">
         <div class="bcg">
             <div class="bcg-bg">
@@ -252,6 +245,63 @@
         </div>
     </div><!-- /transparent-bg -->
 
+    <div class="section s2" id="s2">
+        <div class="inner">
+            <div class="pricing">
+                <div class="container">
+                    <div class="pricing-header">
+                        <h2>Statistics</h2>
+                        <p>This section belongs to a selection of statistical data gathered from our sensors.</p>
+                    </div>
+
+                    <div class="row">
+                        <div id="stat0" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    </div>
+
+                    <hr class="divider_hr">
+
+                    <div class="row">
+                        <div id="stat1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    </div>
+
+                    <hr class="divider_hr">
+
+                    <div class="row">
+                        <div id="stat2" style="height: 400px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+                    </div>
+
+                    <hr class="divider_hr">
+
+                    <div class="row">
+                        <div class="custom-header">Room PIR Map</div>
+                        <div class="pirrow">
+                            <!-- 1st row */ -->
+                            <div class="pirsqr pirsqr1"><div class="pirsqr-content"><div class="table">
+                                <div class="table-cell">
+                                    1
+                                </div>
+                            </div></div></div>
+                            <div class="pirsqr pirsqr1"><div class="pirsqr-content"><div class="table">
+                                <div class="table-cell">
+                                    2
+                                </div>
+                            </div></div></div>
+                            <div class="pirsqr pirsqr1"><div class="pirsqr-content"><div class="table">
+                                <div class="table-cell">
+                                    3
+                                </div>
+                            </div></div></div>
+                            <div class="pirsqr pirsqr1"><div class="pirsqr-content"><div class="table">
+                                <div class="table-cell">
+                                    4
+                                </div>
+                            </div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="section s3" id="s3">
         <div class="inner">
@@ -306,207 +356,112 @@
         </div>
     </div>
 
-    <!-- <div class="section s5" id="s5">
-        <div class="inner">
-            <div class="pricing">
-                <div class="container">
-                    <div class="pricing-header">
-                        <h2>Our Pricing</h2>
-                        <p>We are team of creative photographers. We passionate with photography and other creative things. If you are looking professional photography theme with endless possibilities, you come in right place. This template consist of well-organized layers. Tons of features waiting for you.</p>
-                    </div>
+    <div class="section s7" id="s7">
+        <div class="inner inner-contact">
+            <div class="transparent-bg">
+                <div class="bcg">
+                    <div class="bcg-bg bcg-bg-blk">
+                        <div class="container">
+                            <div class="contact">
 
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <div class="pricing-box">
-                                <div class="pricing-head">
-                                    <h1 class="price">$500</h1>
-                                    <h4>Standard</h4>
-                                </div>
-                                <div class="pricing-row">
-                                    Creative Idea
-                                </div>
-                                <div class="pricing-row">
-                                    <strong>24/7</strong>TECH SUPPORT
-                                </div>
-                                <div class="pricing-row">
-                                    <strong>5</strong>PROJECTS
-                                </div>
-                                <div class="pricing-row">
-                                    <strong>1GB</strong>STORAGE
-                                </div>
-                                <div class="pricing-row">
-                                    UNLIMITED USERS
-                                </div>
-                                <div class="pricing-row last">
-                                    <a href="#" class="submit">Buy It Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <div class="pricing-box">
-                                <div class="pricing-head business">
-                                    <h1 class="price">$500</h1>
-                                    <h4>Standard</h4>
-                                </div>
-                                <div class="pricing-row">
-                                    Creative Idea
-                                </div>
-                                <div class="pricing-row">
-                                    <strong>24/7</strong>TECH SUPPORT
-                                </div>
-                                <div class="pricing-row">
-                                    <strong>5</strong>PROJECTS
-                                </div>
-                                <div class="pricing-row">
-                                    <strong>1GB</strong>STORAGE
-                                </div>
-                                <div class="pricing-row">
-                                    UNLIMITED USERS
-                                </div>
-                                <div class="pricing-row last">
-                                    <a href="#" class="submit">Buy It Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <div class="pricing-box">
-                                <div class="pricing-head">
-                                    <h1 class="price">$500</h1>
-                                    <h4>Standard</h4>
-                                </div>
-                                <div class="pricing-row">
-                                    Creative Idea
-                                </div>
-                                <div class="pricing-row">
-                                    <strong>24/7</strong>TECH SUPPORT
-                                </div>
-                                <div class="pricing-row">
-                                    <strong>5</strong>PROJECTS
-                                </div>
-                                <div class="pricing-row">
-                                    <strong>1GB</strong>STORAGE
-                                </div>
-                                <div class="pricing-row">
-                                    UNLIMITED USERS
-                                </div>
-                                <div class="pricing-row last">
-                                    <a href="#" class="submit">Buy It Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                <h1>Contact Us</h1>
 
-                </div>
-            </div><!--  /pricing  -->
-</div>
-</div>
+                                <div class="row">
 
-<div class="section s7" id="s7">
-    <div class="inner">
-        <div class="transparent-bg">
-            <div class="bcg">
-                <div class="bcg-bg bcg-bg-blk">
-                    <div class="container">
-                        <div class="contact">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 
-                            <h1>Contact Us</h1>
-
-                            <div class="row">
-
-                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-
-                                    <div class="contact-form">
-                                        <form class="form-horizontal">
-                                            <div class="row">
-                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Name</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                        <div class="contact-form">
+                                            <form class="form-horizontal">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Name</label>
+                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Email address</label>
+                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Subject</label>
+                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Email address</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Massage</label>
+                                                            <textarea class="form-control" rows="3"></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Subject</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                <div class="control-group">
+                                                    <div class="controls">
+                                                        <button type="button" class="btn btn-default btn-lg">Send</button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Massage</label>
-                                                        <textarea class="form-control" rows="3"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="control-group">
-                                                <div class="controls">
-                                                    <button type="button" class="btn btn-default btn-lg">Send</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
+
                                     </div>
 
-                                </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-
-                                    <div class="address">
-                                        <h3>Address:</h3>
-                                        <i class="icons-marker icon-home"></i>
-                                        <div class="contact-address">
-                                            Room 409, Technological Services Building <br>
-                                            Sharif University of Technology, <br>
-                                            Tehran, Iran.
-                                        </div>
-                                    </div><!--End address-->
-
-                                    <div class="address">
-                                        <h3>Phones:</h3>
-                                        <div class="phone">
-                                            <i class="icon-volume-down"></i>
+                                        <div class="address">
+                                            <h3>Address:</h3>
+                                            <i class="icons-marker icon-home"></i>
                                             <div class="contact-address">
-                                                Vahid Geraeinejad +98 912 701 6183
+                                                Room 409, Technological Services Building <br>
+                                                Sharif University of Technology, <br>
+                                                Tehran, Iran.
                                             </div>
-                                        </div>
-                                        <div class="phone">
-                                            <i class="icon-print"></i>
-                                            <div class="contact-address">
-                                                Aein Rezaei +98 938 654 5110
+                                        </div><!--End address-->
+
+                                        <div class="address">
+                                            <h3>Phones:</h3>
+                                            <div class="phone">
+                                                <i class="icon-volume-down"></i>
+                                                <div class="contact-address">
+                                                    Vahid Geraeinejad +98 912 701 6183
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div><!--End address-->
-
-                                    <div class="address">
-                                        <h3>Email:</h3>
-                                        <div class="phone">
-                                            <i class="icon-envelope"></i>
-                                            <div class="email">
-                                                <a href="#">vahidgn@gmail.com</a>
+                                            <div class="phone">
+                                                <i class="icon-print"></i>
+                                                <div class="contact-address">
+                                                    Aein Rezaei +98 938 654 5110
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div><!--End address-->
+                                        </div><!--End address-->
 
-                                </div>
+                                        <div class="address">
+                                            <h3>Email:</h3>
+                                            <div class="phone">
+                                                <i class="icon-envelope"></i>
+                                                <div class="email">
+                                                    <a href="#">vahidgn@gmail.com</a>
+                                                </div>
+                                            </div>
+                                        </div><!--End address-->
 
-                            </div><!-- /row -->
+                                    </div>
 
+                                </div><!-- /row -->
+
+
+                            </div>
 
                         </div>
 
                     </div>
-
                 </div>
-            </div>
-        </div><!-- /transparent-bg -->
+            </div><!-- /transparent-bg -->
+        </div>
     </div>
-</div>
 
 </div>
 
@@ -522,5 +477,10 @@
 <script src="{% static 'sources/isotop.js' %}"></script>
 <script src="{% static 'sources/jquery.colorbox.js' %}"></script>
 <script type="text/javascript" src="{% static 'sources/Chart.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/highcharts/highcharts.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/highcharts/highcharts-more.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/highcharts/modules/heatmap.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/highcharts/modules/treemap.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/highcharts/modules/exporting.js' %}"></script>
 <script type="text/javascript" src="{% static 'sources/sensors/script.js' %}"></script>
 </html>
