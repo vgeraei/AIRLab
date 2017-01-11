@@ -1,17 +1,19 @@
 {% load staticfiles %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+<!DOCTYPE html>
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>iRoom</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+{#    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>#}
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="{% static 'css/sensors/style.css' %}">
@@ -48,11 +50,37 @@
                         <li><a><i class="fa fa-tachometer"></i><h  id="temp">24.3°C</h></a></li>
                         <li><a><i class="fa fa-tint"></i><h id="hum">3</h></a></li>
                         <li><a><i class="fa fa-users"></i><h id="number">2</h>
-{#                            geButton">Change</button></a></li>#}
+                            {#                            geButton">Change</button></a></li>#}
 
                         <li><a><i class="fa fa-key"></i><h id="door_status">Open</h></a></li>
                         <li><a><i class="fa fa-lightbulb-o"></i><h id="light">4.4</h></a></li>
                         <li><a><i class="fa fa-home"></i><h id="pir">The Room is not empty.</h></a></li>
+                        <li><a><i class="fa fa-home"></i>
+                            <h id="pirMap">PIR Map</h>
+                            <div class="pirrow">
+                                <!-- 1st row */ -->
+                                <div class="pirsqr pirsqr1"><div class="pirsqr-content"><div class="table">
+                                    <div class="table-cell">
+                                        1
+                                    </div>
+                                </div></div></div>
+                                <div class="pirsqr pirsqr1"><div class="pirsqr-content"><div class="table">
+                                    <div class="table-cell">
+                                        2
+                                    </div>
+                                </div></div></div>
+                                <div class="pirsqr pirsqr1"><div class="pirsqr-content"><div class="table">
+                                    <div class="table-cell">
+                                        3
+                                    </div>
+                                </div></div></div>
+                                <div class="pirsqr pirsqr1"><div class="pirsqr-content"><div class="table">
+                                    <div class="table-cell">
+                                        4
+                                    </div>
+                                </div></div></div>
+                            </div>
+                        </a></li>
                     </ul>
                 </div>
 
