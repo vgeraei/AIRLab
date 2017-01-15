@@ -29,8 +29,8 @@ sensor_addr2='\x00\x13\xa2\x00\x40\xe9\x97\xc1' #magnet
 sensor_addr3='\x00\x13\xa2\x00\x40\xe9\x97\xbe' #number
 
 
-# conn = sqlite3.connect('db.sqlite3')
-# c = conn.cursor()
+conn = sqlite3.connect('db.sqlite3')
+c = conn.cursor()
 
 try:
     cursor = c.execute('SELECT max(id) FROM sensor_network_sensor')
@@ -63,26 +63,24 @@ def read_sensors(resp):
         else:
             value = item
             d = datetime.now()
-            # try:
-            #     c.execute('INSERT INTO sensor_network_sensor VALUES (?,?,?,?)', [id_counter, value, word, d])
-            # except:
-            #     print("Database error")
+            try:
+                c.execute('INSERT INTO sensor_network_sensor VALUES (?,?,?,?)', [id_counter, value, word, d])
+            except:
+                print("Database error")
             print(id_counter)
             id_counter = id_counter + 1
-            # conn.commit()
+            conn.commit()
             realtime_data[word] = value
             realtime_json = json.dumps(realtime_data)
 
-            try:
-                with open('realtime_data.json', 'w') as outfile:
-                    json.dump(realtime_json, outfile)
-            except:
-                print("Opening JSON error")
+            # try:
+            #     with open('realtime_data.json', 'w') as outfile:
+            #         json.dump(realtime_json, outfile)
+            # except:
+            #     print("Opening JSON error")
             #print(realtime_data)
 
         counter = counter + 1
-
-
 
 def main_loop():
     print("Receive Data is Running")
