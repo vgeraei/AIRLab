@@ -68,7 +68,7 @@ def read_sensors(resp):
             # except:
             #     print("Database error")
             print(id_counter)
-            # id_counter = id_counter + 1
+            id_counter = id_counter + 1
             # conn.commit()
             realtime_data[word] = value
             realtime_json = json.dumps(realtime_data)
