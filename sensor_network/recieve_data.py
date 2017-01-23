@@ -73,12 +73,12 @@ def read_sensors(resp):
             realtime_data[word] = value
             realtime_json = json.dumps(realtime_data)
 
-            # try:
-            #     with open('realtime_data.json', 'w') as outfile:
-            #         json.dump(realtime_json, outfile)
-            # except:
-            #     print("Opening JSON error")
-            #print(realtime_data)
+            try:
+                with open('realtime_data.json', 'w') as outfile:
+                    json.dump(realtime_json, outfile)
+            except:
+                print("Opening JSON error")
+            print(realtime_data)
 
         counter = counter + 1
 
