@@ -1,6 +1,7 @@
-var staticAddr = "http://172.20.27.94:8000/"
-var dst_data
+var staticAddr = "http://172.20.27.94:8000/";
+var dst_data;
 var dst1, dst0;
+var statDisplayedID = "#stat0";
 
 $('.collapse').collapse();
 
@@ -199,10 +200,53 @@ function highcharts_draw(dst){
         }]
     });
 
+    $('#stat1').css("display", "none");
+    $('#stat2').css("display", "none");
 
 }
 
+function statButtons(){
+    $('#stat0Button').on('click', function(){
+        if(statDisplayedID != '#stat0') {
+            $(this).addClass("active");
+            $(statDisplayedID+'Button').removeClass("active");
 
+            $(statDisplayedID).hide("fast", function(){
+                $("#stat0").show("fast");
+                 statDisplayedID = '#stat0';
+            });
+
+        }
+
+    });
+
+    $('#stat1Button').on('click', function(){
+        if(statDisplayedID != '#stat1') {
+            $(this).addClass("active");
+            $(statDisplayedID+'Button').removeClass("active");
+
+            $(statDisplayedID).hide("fast", function(){
+                $("#stat1").show("fast");
+                 statDisplayedID = '#stat1';
+            });
+
+        }
+
+    });
+
+    $('#stat2Button').on('click', function(){
+        if(statDisplayedID != '#stat2') {
+            $(this).addClass("active");
+            $(statDisplayedID+'Button').removeClass("active");
+
+            $(statDisplayedID).hide("fast", function(){
+                $("#stat2").show("fast");
+                 statDisplayedID = '#stat2';
+            });
+        }
+
+    });
+}
 
 $(function() {
     $('a[href*=#]:not([href=#])').click(function() {
@@ -264,27 +308,28 @@ function test_query() {
 $(document).ready( function() {
     // load_realtime_data();
     test_query();
+    statButtons();
     // $('.numberChangeButton').on('click', changeNumber);
 
     $('.subMenu').smint({
         'scrollSpeed' : 1000
     });
 
-    var dd = $('.vticker').easyTicker({
-        direction: 'up',
-        easing: 'easeInOutBack',
-        speed: 'slow',
-        interval: 4000,
-        height: 'auto',
-        visible: 1,
-        mousePause: 0,
-        controls: {
-            up: '.up',
-            down: '.down',
-            toggle: '.toggle',
-            stopText: 'Stop !!!'
-        }
-    }).data('easyTicker');
+    // var dd = $('.vticker').easyTicker({
+    //     direction: 'up',
+    //     easing: 'easeInOutBack',
+    //     speed: 'slow',
+    //     interval: 4000,
+    //     height: 'auto',
+    //     visible: 1,
+    //     mousePause: 0,
+    //     controls: {
+    //         up: '.up',
+    //         down: '.down',
+    //         toggle: '.toggle',
+    //         stopText: 'Stop !!!'
+    //     }
+    // }).data('easyTicker');
 
 
 

@@ -56,7 +56,7 @@ h6 {
 
 .top-container {
 	width: 100%;
-	min-height: 650px;
+	/*min-height: 650px;*/
 	position: relative;
 	background: url(../../images/sensors/bg.jpg);
 	background-attachment: fixed;
@@ -66,13 +66,27 @@ h6 {
 
 
 
-.large-logo {
-	width: 100%;
-	height: auto;
-	text-align: center;
-	margin: 120px auto;
-	margin-bottom: 40px;
-	margin-top: 5%;
+/*.large-logo {*/
+	/*width: 100%;*/
+	/*height: auto;*/
+	/*text-align: center;*/
+	/*margin: 120px auto;*/
+	/*margin-bottom: 40px;*/
+	/*margin-top: 5%;*/
+/*}*/
+
+.top-information-menu{
+	float: left;
+	width: 30%;
+	/*margin-top: -40px;*/
+	margin-bottom: 15px;
+}
+
+.top-information-item{
+	float: right;
+	width: 70%;
+	/*margin-top: -40px;*/
+	margin-bottom: 15px;
 }
 
 .numberChange{
@@ -264,7 +278,11 @@ a.click-down:hover {
 }
 
 .nav-pills a:hover {
-	background: rgba(142,142,142, 0.9) !important;
+	background: rgba(104, 104, 104, 0.9) !important;
+}
+
+.nav-pills .active {
+	background: rgba(104, 104, 104, 0.9) !important;
 }
 
 .nav-pills li a {

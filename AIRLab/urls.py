@@ -17,7 +17,8 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from sensor_network.views import *
-from sensor_network.recieve_data import *
+from smart_tile.views import *
+# from sensor_network.recieve_data import *
 
 from login.views import *
 
@@ -28,8 +29,9 @@ urlpatterns = [
     url(r'^sensors/load_realtime/$', load_realtime_data),
     url(r'^sensors/query/$', query_tmp),
     url(r'^face/$', login),
+    url(r'^smart_tile/$', view_smart_tile),
 ]
 
 import subprocess
 
-subprocess.Popen(["python", "sensor_network/recieve_data.py"])
+# subprocess.Popen(["python", "sensor_network/recieve_data.py"])
