@@ -78,7 +78,7 @@ def read_sensors(resp):
                     json.dump(realtime_json, outfile)
             except:
                 print("Opening JSON error")
-            print(realtime_data)
+            # print(realtime_data)
 
         counter = counter + 1
 
