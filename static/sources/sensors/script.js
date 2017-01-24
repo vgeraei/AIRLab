@@ -306,7 +306,7 @@ function test_query() {
 }
 
 $(document).ready( function() {
-    // load_realtime_data();
+    load_realtime_data();
     test_query();
     statButtons();
     // $('.numberChangeButton').on('click', changeNumber);
