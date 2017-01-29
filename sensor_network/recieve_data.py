@@ -104,8 +104,11 @@ def main_loop():
     # Continuously read and print packets
     while True:
         try:
+            print("Before Reading Frame")
             response = zb.wait_read_frame()
+            print("After Reading Frame")
             read_sensors(response)
+            print("After Processing the Response")
             # db = open('dataBase.txt','a')
 
             #print(data_dict)
