@@ -49,7 +49,7 @@ def read_sensors(resp):
     rf_data = rf_data.replace('\x00', '')
     rf_data = rf_data.strip()
     # name = rf_data[0:3]
-    print((rf_data))
+    # print((rf_data))
     # print(rf_data[4:len(rf_data)])
 
     wordList = rf_data.split()
@@ -67,7 +67,7 @@ def read_sensors(resp):
                 c.execute('INSERT INTO sensor_network_sensor VALUES (?,?,?,?)', [id_counter, value, word, d])
             except:
                 print("Database error")
-            print(id_counter)
+            # print(id_counter)
             id_counter = id_counter + 1
             conn.commit()
             realtime_data[word] = value

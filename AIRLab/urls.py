@@ -24,6 +24,12 @@ from smart_tile.views import *
 
 from login.views import *
 
+receive_data = 0
+
+def exit_handler():
+    global receive_data
+    receive_data.kill()
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^sensors/$', view_home),
@@ -35,5 +41,8 @@ urlpatterns = [
 ]
 
 import subprocess
+import atexit
 
-subprocess.Popen(["python", "sensor_network/recieve_data.py"])
+receive_data = subprocess.Popen(["python", "sensor_network/recieve_data.py"])
+atexit.register(exit_handler)
+
