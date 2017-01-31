@@ -131,6 +131,7 @@ def main_loop():
                 # db.close()
 
             ser.flushInput()  # Clear the input buffer once we read the data
+            ser.flushOutput()
         except KeyboardInterrupt:
             print("The program has ended by interrupt")
             continue
