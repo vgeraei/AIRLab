@@ -104,34 +104,13 @@ def main_loop():
     # Continuously read and print packets
     while True:
         try:
+            #1
             response = zb.wait_read_frame()
+            #2
             read_sensors(response)
-            # db = open('dataBase.txt','a')
-
-            #print(data_dict)
-            #data = {
-                #"lum": data_dict['LIG'],
-                #"hum": data_dict['HUM'],
-                #"temp": data_dict['TMP'],
-                #"door_status": data_dict['MAG'],
-                #"window_status": True,
-               # "count": data_dict['NUM'],
-              #  "PIR": True,
-             #   "datetime": datetime.now()
-            #}
-                # collection = db.test1_collection
-
-
-                #fhand = open('/home/pi/Desktop/iRoom/web/detail.json', 'w')
-                #fhand.write(
-                   # '{\n    "temp": %0.2f,\n    "light": "%0.2f/5",\n    "number": 2\n, \n "hum": %0.2f,\n "door_state": %d,\n "window_state": 0,\n "PIR": 0\n}' % (
-                    #data_dict['TMP'], data_dict['LIG'], data_dict['HUM'], data_dict['MAG']))
-                #fhand.close()
-                # db.write('TMP: '+str(data_dict['TMP'])+' '+'LIG: '+str(data_dict['LIG'])+' '+'HUM: '+str(data_dict['HUM'])+' '+'NUM: '+str(data_dict['NUM'])+' '+'MAG: '+str(data_dict['MAG'])+'\n')
-                # db.close()
-
-            ser.flushInput()  # Clear the input buffer once we read the data
-            ser.flushOutput()
+            #3
+            ser.reset_input_buffer()  # Clear the input buffer once we read the data
+            # ser.flushOutput()
         except KeyboardInterrupt:
             print("The program has ended by interrupt")
             continue
