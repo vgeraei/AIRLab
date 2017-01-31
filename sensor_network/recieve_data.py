@@ -109,8 +109,8 @@ def main_loop():
             #2
             read_sensors(response)
             #3
-            ser.reset_input_buffer()  # Clear the input buffer once we read the data
-            # ser.flushOutput()
+            ser.flushInput()  # Clear the input buffer once we read the data
+            ser.flushOutput()
         except KeyboardInterrupt:
             print("The program has ended by interrupt")
             continue
