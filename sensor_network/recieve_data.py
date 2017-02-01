@@ -104,13 +104,13 @@ def main_loop():
     # Continuously read and print packets
     while True:
         try:
-            #1
+            print("Before reading")
             response = zb.wait_read_frame()
-            #2
+            print("After reading")
             read_sensors(response)
-            #3
-            ser.reset_input_buffer()  # Clear the input buffer once we read the data
-            ser.reset_output_buffer()
+            print("Before Processing")
+            # ser.reset_input_buffer()  # Clear the input buffer once we read the data
+            # ser.reset_output_buffer()
         except KeyboardInterrupt:
             print("The program has ended by interrupt")
             continue
