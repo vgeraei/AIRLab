@@ -107,8 +107,8 @@ def main_loop():
             print("Before reading")
             response = zb.wait_read_frame()
             print("After reading")
-            # read_sensors(response)
-            print(response)
+            read_sensors(response)
+            # print(response)
             # print("Before Processing")
             # ser.reset_input_buffer()  # Clear the input buffer once we read the data
             # ser.reset_output_buffer()
