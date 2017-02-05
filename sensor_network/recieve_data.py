@@ -108,7 +108,7 @@ def resp_put(q):
             # print("connected")
             break
         except:
-            print(usb_counter)
+            # print(usb_counter)
             usb_counter = usb_counter + 1
 
     # Create API object
