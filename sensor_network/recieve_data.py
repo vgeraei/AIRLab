@@ -44,7 +44,7 @@ except:
     id_counter = 1
 
 def resp_proc(resp):
-    #print("reading sensors:")
+    print("Reading a response.")
     address = resp['source_addr_long']
     # if (address==temp_sensor_address or address==temp_sensor_address2) :
     # if(True):
@@ -90,6 +90,7 @@ def resp_get(q):
     print("Response getter thread is running.")
     while True:
         if not q.empty():
+            print("in if")
             resp = q.get()
             q.task_done()
             resp_proc(resp)
@@ -104,7 +105,7 @@ def resp_put(q):
     while True:
         try:
             ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
-            print("connected")
+            # print("connected")
             break
         except:
             print(usb_counter)
