@@ -83,6 +83,7 @@ def resp_proc(resp):
 
 def resp_get(q):
     print("Response getter thread is running.")
+    print(type(q.qsize()))
     global id_counter
     conn = sqlite3.connect('db.sqlite3')
     c = conn.cursor()
@@ -95,7 +96,7 @@ def resp_get(q):
     while True:
         if not q.empty():
             print("Lenght of Q: ", q.qsize())
-            if int(q.qsize) > 50:
+            if q.qsize() > 50:
                 with q.mutex:
                     q.queue.clear()
                     print("Queue Cleared!")
