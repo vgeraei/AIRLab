@@ -95,6 +95,9 @@ def resp_get(q):
     while True:
         if not q.empty():
             print("Lenght of Q: ", q.qsize())
+            if q.qsize > 50:
+                with q.mutex:
+                    q.queue.clear()
             resp = q.get()
             q.task_done()
             # print("Reading a response.")
