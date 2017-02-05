@@ -94,7 +94,7 @@ def resp_get(q):
         id_counter = 1
     while True:
         if not q.empty():
-            print("Lenght of Q: ", q.qsize())
+            print("Lenght of Q: {0}".format(q.qsize()))
             if q.qsize() > 50:
                 with q.mutex:
                     q.queue.clear()
