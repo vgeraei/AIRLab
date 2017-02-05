@@ -31,17 +31,12 @@ sensor_addr2='\x00\x13\xa2\x00\x40\xe9\x97\xc1' #magnet
 sensor_addr3='\x00\x13\xa2\x00\x40\xe9\x97\xbe' #number
 
 
-conn = sqlite3.connect('db.sqlite3')
-c = conn.cursor()
+
 
 resp_queue = Queue()
+id_counter = 0
 
-try:
-    cursor = c.execute('SELECT max(id) FROM sensor_network_sensor')
-    max_id = cursor.fetchone()[0]
-    id_counter = max_id + 1
-except:
-    id_counter = 1
+
 
 def resp_proc(resp):
     print("Reading a response.")
@@ -88,6 +83,15 @@ def resp_proc(resp):
 
 def resp_get(q):
     print("Response getter thread is running.")
+    global id_counter
+    conn = sqlite3.connect('db.sqlite3')
+    c = conn.cursor()
+    try:
+        cursor = c.execute('SELECT max(id) FROM sensor_network_sensor')
+        max_id = cursor.fetchone()[0]
+        id_counter = max_id + 1
+    except:
+        id_counter = 1
     while True:
         if not q.empty():
             print("in if")
