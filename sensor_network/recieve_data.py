@@ -134,11 +134,11 @@ def resp_put(q):
 def main_loop():
     print("Receive Data is Running")
     resp_put_thread = Thread(target=resp_put, args=(resp_queue,))
-    resp_put_thread.setDaemon(True)
+    # resp_put_thread.setDaemon(True)
     resp_put_thread.start()
 
     resp_get_thread = Thread(target=resp_get, args=(resp_queue,))
-    resp_get_thread.setDaemon(True)
+    # resp_get_thread.setDaemon(True)
     resp_get_thread.start()
 
     resp_queue.join()
