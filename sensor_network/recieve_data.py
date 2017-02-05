@@ -87,6 +87,7 @@ def resp_proc(resp):
         counter = counter + 1
 
 def resp_get(q):
+    print("Response getter thread is running.")
     while True:
         if not q.empty():
             resp = q.get()
@@ -94,6 +95,7 @@ def resp_get(q):
             resp_proc(resp)
 
 def resp_put(q):
+    print("Response putter thread is running.")
     PORT = '/dev/ttyUSB'
     BAUD_RATE = 9600
     data_dict = {'TMP': 0, 'LIG': 0, 'HUM': 0, 'NUM': 0, 'MAG': 0}
