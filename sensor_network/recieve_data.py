@@ -94,7 +94,7 @@ def resp_get(q):
         id_counter = 1
     while True:
         if not q.empty():
-            print("Lenght of Q: ", len(q))
+            print("Lenght of Q: ", q.qsize())
             resp = q.get()
             q.task_done()
             # print("Reading a response.")
