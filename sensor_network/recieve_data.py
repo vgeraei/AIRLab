@@ -95,11 +95,11 @@ def resp_get(q):
     while True:
         if not q.empty():
             print("Lenght of Q: {0}".format(q.qsize()))
+            resp = q.get()
             if q.qsize() > 50:
                 with q.mutex:
                     q.queue.clear()
                     print("Queue Cleared!")
-            resp = q.get()
             q.task_done()
             # print("Reading a response.")
             address = resp['source_addr_long']
