@@ -83,7 +83,6 @@ def resp_proc(resp):
 
 def resp_get(q):
     print("Response getter thread is running.")
-    print(type(q.qsize()))
     global id_counter
     conn = sqlite3.connect('db.sqlite3')
     c = conn.cursor()
