@@ -1,6 +1,8 @@
 import sys
 import sqlite3
 from datetime import datetime
+from Queue import Queue
+from threading import Thread
 
 
 
@@ -32,6 +34,8 @@ sensor_addr3='\x00\x13\xa2\x00\x40\xe9\x97\xbe' #number
 conn = sqlite3.connect('db.sqlite3')
 c = conn.cursor()
 
+resp_queue = Queue()
+
 try:
     cursor = c.execute('SELECT max(id) FROM sensor_network_sensor')
     max_id = cursor.fetchone()[0]
@@ -39,7 +43,7 @@ try:
 except:
     id_counter = 1
 
-def read_sensors(resp):
+def resp_proc(resp):
     #print("reading sensors:")
     address = resp['source_addr_long']
     # if (address==temp_sensor_address or address==temp_sensor_address2) :
@@ -82,8 +86,14 @@ def read_sensors(resp):
 
         counter = counter + 1
 
-def main_loop():
-    print("Receive Data is Running")
+def resp_get(q):
+    while True:
+        if not q.empty():
+            resp = q.get()
+            q.task_done()
+            resp_proc(resp)
+
+def resp_put(q):
     PORT = '/dev/ttyUSB'
     BAUD_RATE = 9600
     data_dict = {'TMP': 0, 'LIG': 0, 'HUM': 0, 'NUM': 0, 'MAG': 0}
@@ -91,11 +101,11 @@ def main_loop():
     usb_counter = 0
     while True:
         try:
-            ser = serial.Serial(PORT+str(usb_counter), BAUD_RATE)
-            #print("connected")
+            ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
+            # print("connected")
             break
         except:
-            #print(usb_counter)
+            # print(usb_counter)
             usb_counter = usb_counter + 1
 
     # Create API object
@@ -104,10 +114,10 @@ def main_loop():
     # Continuously read and print packets
     while True:
         try:
-            print("Before reading")
+            # print("Before reading")
             response = zb.wait_read_frame()
-            print("After reading")
-            read_sensors(response)
+            # print("After reading")
+            q.put(response)
             # print(response)
             # print("Before Processing")
             # ser.reset_input_buffer()  # Clear the input buffer once we read the data
@@ -118,6 +128,17 @@ def main_loop():
 
     ser.close()
 
+def main_loop():
+    print("Receive Data is Running")
+    resp_put_thread = Thread(target=resp_put, args=(resp_queue,))
+    resp_put_thread.setDaemon(True)
+    resp_put_thread.start()
+
+    resp_get_thread = Thread(target=resp_get, args=(resp_queue,))
+    resp_get_thread.setDaemon(True)
+    resp_get_thread.start()
+
+    resp_queue.join()
 
 if __name__ == '__main__':
     try:
