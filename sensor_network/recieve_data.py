@@ -104,10 +104,10 @@ def resp_put(q):
     while True:
         try:
             ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
-            # print("connected")
+            print("connected")
             break
         except:
-            # print(usb_counter)
+            print(usb_counter)
             usb_counter = usb_counter + 1
 
     # Create API object
