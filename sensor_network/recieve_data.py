@@ -98,6 +98,7 @@ def resp_get(q):
             if int(q.qsize) > 50:
                 with q.mutex:
                     q.queue.clear()
+                    print("Queue Cleared!")
             resp = q.get()
             q.task_done()
             # print("Reading a response.")
