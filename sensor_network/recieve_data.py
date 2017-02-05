@@ -94,10 +94,9 @@ def resp_get(q):
         id_counter = 1
     while True:
         if not q.empty():
-            print("in if")
             resp = q.get()
             q.task_done()
-            print("Reading a response.")
+            # print("Reading a response.")
             address = resp['source_addr_long']
             # if (address==temp_sensor_address or address==temp_sensor_address2) :
             # if(True):
@@ -163,7 +162,7 @@ def resp_put(q):
         try:
             # print("Before reading")
             response = zb.wait_read_frame()
-            print("After reading")
+            print("Message Received")
             q.put(response)
             # print(response)
             # print("Before Processing")
