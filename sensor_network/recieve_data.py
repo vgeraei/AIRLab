@@ -119,7 +119,7 @@ def resp_put(q):
         try:
             # print("Before reading")
             response = zb.wait_read_frame()
-            # print("After reading")
+            print("After reading")
             q.put(response)
             # print(response)
             # print("Before Processing")
