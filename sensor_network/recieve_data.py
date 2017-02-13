@@ -176,10 +176,10 @@ def resp_put(q):
             # q.put(response)
 
             if light_var:
-                zb.tx(dest_addr_long='\xB2\x04', data='1')
+                zb.send('tx', frame_id='a', dest_addr='\xB2\x04', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='1')
                 light_var = 0
             else:
-                zb.tx(dest_addr_long='\xB2\x04', data='0')
+                zb.send('tx', frame_id='a', dest_addr='\xB2\x04', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='0')
                 light_var = 1
 
             time.sleep(5)
