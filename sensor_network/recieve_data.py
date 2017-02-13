@@ -3,6 +3,7 @@ import sqlite3
 from datetime import datetime
 from Queue import Queue
 from threading import Thread
+import time
 
 
 
@@ -150,6 +151,7 @@ def resp_put(q):
     data_dict = {'TMP': 0, 'LIG': 0, 'HUM': 0, 'NUM': 0, 'MAG': 0}
     # Open serial port
     usb_counter = 0
+
     while True:
         try:
             ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
@@ -162,13 +164,25 @@ def resp_put(q):
     # Create API object
     zb = ZigBee(ser, escaped=True)
 
+
+
     # Continuously read and print packets
+    light_var = 0
     while True:
         try:
             # print("Before reading")
-            response = zb.wait_read_frame()
+            # response = zb.wait_read_frame()
             print("Message Received")
-            q.put(response)
+            # q.put(response)
+
+            if light_var:
+                zb.tx(dest_addr='\xB2\x04', data='1')
+                light_var = 0
+            else:
+                zb.tx(dest_addr='\xB2\x04', data='0')
+                light_var = 1
+
+            time.sleep(5)
             # print(response)
             # print("Before Processing")
             # ser.reset_input_buffer()  # Clear the input buffer once we read the data
@@ -185,11 +199,11 @@ def main_loop():
     # resp_put_thread.setDaemon(True)
     resp_put_thread.start()
 
-    resp_get_thread = Thread(target=resp_get, args=(resp_queue,))
+    # resp_get_thread = Thread(target=resp_get, args=(resp_queue,))
     # resp_get_thread.setDaemon(True)
-    resp_get_thread.start()
+    # resp_get_thread.start()
 
-    resp_queue.join()
+    # resp_queue.join()
 
 if __name__ == '__main__':
     try:
