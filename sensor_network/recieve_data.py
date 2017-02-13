@@ -172,7 +172,7 @@ def resp_put(q):
         try:
             # print("Before reading")
             # response = zb.wait_read_frame()
-            print("Message Received")
+            print("Message Sent")
             # q.put(response)
 
             if light_var:
