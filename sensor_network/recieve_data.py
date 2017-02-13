@@ -175,12 +175,12 @@ def resp_put(q):
             print("Message Received")
             # q.put(response)
             print(response)
-            # if light_var:
-            #     zb.send('tx', frame_id='a', dest_addr='\xB2\x04', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='1')
-            #     light_var = 0
-            # else:
-            #     zb.send('tx', frame_id='a', dest_addr='\xB2\x04', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='0')
-            #     light_var = 1
+            if light_var:
+                zb.send('tx', frame_id='\x01',  dest_addr_long='\x00\x13\xa2\x00\x40@\xc8\xe5\x22', data='1')
+                light_var = 0
+            else:
+                zb.send('tx', frame_id='\x01', dest_addr_long='\x00\x13\xa2\x00\x40@\xc8\xe5\x22', data='0')
+                light_var = 1
 
             # time.sleep(5)
             # print(response)
