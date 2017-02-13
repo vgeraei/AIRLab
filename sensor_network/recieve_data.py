@@ -171,10 +171,10 @@ def resp_put(q):
     while True:
         try:
             # print("Before reading")
-            response = zb.wait_read_frame()
-            print("Message Received")
+            # response = zb.wait_read_frame()
+            print("Message Sent")
             # q.put(response)
-            print(response)
+            # print(response)
             if light_var:
                 zb.send('tx', frame_id='\x01', dest_addr='\xb2\x04', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='1')
                 light_var = 0
