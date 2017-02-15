@@ -320,7 +320,7 @@ def resp_put(q):
     data_dict = {'TMP': 0, 'LIG': 0, 'HUM': 0, 'NUM': 0, 'MAG': 0}
     # Open serial port
     usb_counter = 0
-    xbee = XBee("COM3")
+    xbee = XBee("/dev/ttyUSB")
 
     # while True:
     #     try:
