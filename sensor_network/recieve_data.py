@@ -97,7 +97,7 @@ class XBee():
         self.RxMessages.append(frame)
         return True
 
-    def SendStr(self, msg, addr=0xFFFF, options=0x01, frameid=0x00):
+    def SendStr(self, msg, addr=0xB204, options=0x01, frameid=0x00):
         """
         Inputs:
           msg: A message, in string format, to be sent
