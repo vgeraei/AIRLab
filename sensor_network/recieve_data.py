@@ -38,6 +38,53 @@ resp_queue = Queue()
 id_counter = 0
 
 
+def Send(self, msg, addr=0xFFFF, options=0x01, frameid=0x00):
+    if not msg:
+        return 0
+
+    hexs = '7E 00 {:02X} 01 {:02X} {:02X} {:02X} {:02X}'.format(
+        len(msg) + 5,  # LSB (length)
+        frameid,
+        (addr & 0xFF00) >> 8,  # Destination address high byte
+        addr & 0xFF,  # Destination address low byte
+        options
+    )
+
+    frame = bytearray.fromhex(hexs)
+    #  Append message content
+    frame.extend(msg)
+
+    # Calculate checksum byte
+    frame.append(0xFF - (sum(frame[3:]) & 0xFF))
+
+    # Escape any bytes containing reserved characters
+    frame = self.Escape(frame)
+
+    print("Tx: " + self.format(frame))
+    return self.serial.write(frame)
+
+
+def SendStr(self, msg, addr=0xB204, options=0x01, frameid=0x00):
+    return self.Send(msg.encode('utf-8'), addr, options, frameid)
+
+
+def Escape(self, msg):
+    escaped = bytearray()
+    reserved = bytearray(b"\x7E\x7D\x11\x13")
+
+    escaped.append(msg[0])
+    for m in msg[1:]:
+        if m in reserved:
+            escaped.append(0x7D)
+            escaped.append(m ^ 0x20)
+        else:
+            escaped.append(m)
+
+    return escaped
+
+
+def format(self, msg):
+    return " ".join("{:02x}".format(b) for b in msg)
 
 def resp_proc(resp):
     print("Reading a response.")
@@ -176,15 +223,15 @@ def resp_put(q):
             # q.put(response)
             # print(response)
             if light_var:
-                zb.send('tx', frame_id='\x01', dest_addr='\xb2\x04', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='1')
+                sent = zb.SendStr("1")
                 light_var = 0
                 print("sent 1")
             else:
-                zb.send('tx', frame_id='\x01', dest_addr='\xb2\x04', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='0')
+                sent = zb.SendStr("0")
                 light_var = 1
                 print("sent 0")
 
-            time.sleep(5)
+            time.sleep(2)
             # print(response)
             # print("Before Processing")
             # ser.reset_input_buffer()  # Clear the input buffer once we read the data
