@@ -320,7 +320,7 @@ def resp_put(q):
     data_dict = {'TMP': 0, 'LIG': 0, 'HUM': 0, 'NUM': 0, 'MAG': 0}
     # Open serial port
     usb_counter = 0
-    xbee = XBee.XBee("COM3")
+    xbee = XBee("COM3")
 
     # while True:
     #     try:
@@ -361,7 +361,7 @@ def resp_put(q):
             print("The program has ended by interrupt")
             continue
 
-    ser.close()
+    # ser.close()
 
 def main_loop():
     print("Receive Data is Running")
