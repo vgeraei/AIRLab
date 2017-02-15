@@ -111,7 +111,7 @@ class XBee():
         """
         return self.Send(msg.encode('utf-8'), addr, options, frameid)
 
-    def Send(self, msg, addr=0xFFFF, options=0x01, frameid=0x00):
+    def Send(self, msg, addr=0xB204, options=0x01, frameid=0x00):
         """
         Inputs:
           msg: A message, in bytes or bytearray format, to be sent to an XBee
