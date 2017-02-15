@@ -315,12 +315,12 @@ def resp_get(q):
 
 def resp_put(q):
     print("Response putter thread is running.")
-    # PORT = '/dev/ttyUSB'
-    # BAUD_RATE = 9600
+    PORT = '/dev/ttyUSB'
+    BAUD_RATE = 9600
     data_dict = {'TMP': 0, 'LIG': 0, 'HUM': 0, 'NUM': 0, 'MAG': 0}
     # Open serial port
     usb_counter = 0
-    xbee = XBee("/dev/ttyUSB")
+
 
     # while True:
     #     try:
@@ -330,6 +330,16 @@ def resp_put(q):
     #     except:
     #         # print(usb_counter)
     #         usb_counter = usb_counter + 1
+
+    while True:
+        try:
+            xbee = XBee(PORT+ str(usb_counter))
+            # print("connected")
+            break
+        except:
+            # print(usb_counter)
+            usb_counter = usb_counter + 1
+
 
     # Create API object
     # zb = ZigBee(ser, escaped=True)
