@@ -109,7 +109,7 @@ class XBee():
         Returns:
           Number of bytes sent
         """
-        return self.Send(msg.encode('utf-8'), addr, options, frameid)
+        return self.Send(msg, addr, options, frameid)
 
     def Send(self, msg, addr=0xB204, options=0x01, frameid=0x00):
         """
