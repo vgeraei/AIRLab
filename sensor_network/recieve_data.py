@@ -97,7 +97,7 @@ class XBee():
         self.RxMessages.append(frame)
         return True
 
-    def SendStr(self, msg, addr=0xB204, options=0x01, frameid=0x00):
+    def SendStr(self, msg, addr=0xFFFF, options=0x01, frameid=0x00):
         """
         Inputs:
           msg: A message, in string format, to be sent
@@ -111,7 +111,7 @@ class XBee():
         """
         return self.Send(msg.encode('utf-8'), addr, options, frameid)
 
-    def Send(self, msg, addr=0xB204, options=0x01, frameid=0x00):
+    def Send(self, msg, addr=0xFFFF, options=0x01, frameid=0x00):
         """
         Inputs:
           msg: A message, in bytes or bytearray format, to be sent to an XBee
@@ -145,6 +145,7 @@ class XBee():
         frame = self.Escape(frame)
 
         print("Tx: " + self.format(frame))
+        print(frame)
         return self.serial.write(frame)
 
     def Unescape(self, msg):
@@ -354,12 +355,12 @@ def resp_put(q):
             # q.put(response)
             # print(response)
             if light_var:
-                sent = xbee.SendStr("1")
+                sent = xbee.SendStr("1", addr=0xB204)
                 # zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="1")
                 light_var = 0
                 print("sent 1")
             else:
-                sent = xbee.SendStr("0")
+                sent = xbee.SendStr("0", addr=0xB204)
                 # zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="0")
                 light_var = 1
                 print("sent 0")
