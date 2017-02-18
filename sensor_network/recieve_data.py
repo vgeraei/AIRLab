@@ -322,27 +322,27 @@ def resp_put(q):
     usb_counter = 0
 
 
-    # while True:
-    #     try:
-    #         ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
-    #         # print("connected")
-    #         break
-    #     except:
-    #         # print(usb_counter)
-    #         usb_counter = usb_counter + 1
-
     while True:
         try:
-            xbee = XBee(PORT+ str(usb_counter))
+            ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
             # print("connected")
             break
         except:
             # print(usb_counter)
             usb_counter = usb_counter + 1
 
+    # while True:
+    #     try:
+    #         xbee = XBee(PORT+ str(usb_counter))
+    #         # print("connected")
+    #         break
+    #     except:
+    #         # print(usb_counter)
+    #         usb_counter = usb_counter + 1
+
 
     # Create API object
-    # zb = ZigBee(ser, escaped=True)
+    zb = ZigBee(ser, escaped=True)
 
     # Continuously read and print packets
     light_var = 0
@@ -354,11 +354,13 @@ def resp_put(q):
             # q.put(response)
             # print(response)
             if light_var:
-                sent = xbee.SendStr("1")
+                # sent = xbee.SendStr("1")
+                zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="1")
                 light_var = 0
                 print("sent 1")
             else:
-                sent = xbee.SendStr("0")
+                # sent = xbee.SendStr("0")
+                zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="0")
                 light_var = 1
                 print("sent 0")
 
@@ -371,7 +373,7 @@ def resp_put(q):
             print("The program has ended by interrupt")
             continue
 
-    # ser.close()
+    ser.close()
 
 def main_loop():
     print("Receive Data is Running")
