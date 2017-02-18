@@ -342,7 +342,7 @@ def resp_put(q):
 
 
     # Create API object
-    zb = ZigBee(ser, escaped=True)
+    zb = XBee(ser, escaped=True)
 
     # Continuously read and print packets
     light_var = 0
