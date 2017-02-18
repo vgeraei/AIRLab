@@ -355,13 +355,13 @@ def resp_put(q):
             # q.put(response)
             # print(response)
             if light_var:
-                sent = xbee.SendStr("1", addr=0xB204)
+                sent = xbee.SendStr("1")
                 # zb.tx_long_addr(frame='0x1', dest_addr='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='A1')
                 # zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="1")
                 light_var = 0
                 print("sent 1")
             else:
-                sent = xbee.SendStr("0", addr=0xB204)
+                sent = xbee.SendStr("0")
                 # zb.tx_long_addr(frame='0x1', dest_addr='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='A0')
                 # zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="0")
                 light_var = 1
