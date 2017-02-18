@@ -354,11 +354,11 @@ def resp_put(q):
             # q.put(response)
             # print(response)
             if light_var:
-                sent = xbee.SendStr("1")
+                sent = xbee.SendStr("Hello-1")
                 light_var = 0
                 print("sent 1")
             else:
-                sent = xbee.SendStr("0")
+                sent = xbee.SendStr("Hello-0")
                 light_var = 1
                 print("sent 0")
 
