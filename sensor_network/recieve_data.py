@@ -322,27 +322,27 @@ def resp_put(q):
     usb_counter = 0
 
 
-    # while True:
-    #     try:
-    #         ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
-    #         # print("connected")
-    #         break
-    #     except:
-    #         # print(usb_counter)
-    #         usb_counter = usb_counter + 1
-
     while True:
         try:
-            xbee = XBee(PORT+ str(usb_counter))
+            ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
             # print("connected")
             break
         except:
             # print(usb_counter)
             usb_counter = usb_counter + 1
 
+    # while True:
+    #     try:
+    #         xbee = XBee(PORT+ str(usb_counter))
+    #         # print("connected")
+    #         break
+    #     except:
+    #         # print(usb_counter)
+    #         usb_counter = usb_counter + 1
+
 
     # Create API object
-    # zb = ZigBee(ser, escaped=True)
+    zb = ZigBee(ser, escaped=True)
 
 
     # Continuously read and print packets
@@ -350,24 +350,24 @@ def resp_put(q):
     while True:
         try:
             # print("Before reading")
-            # response = zb.wait_read_frame()
-            print("Message Sent")
-            # q.put(response)
+            response = zb.wait_read_frame()
+            # print("Message Sent")
+            q.put(response)
             # print(response)
-            if light_var:
-                sent = xbee.SendStr("1")
+            # if light_var:
+            #     sent = xbee.SendStr("1")
                 # zb.tx_long_addr(frame='0x1', dest_addr='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='A1')
                 # zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="1")
-                light_var = 0
-                print("sent 1")
-            else:
-                sent = xbee.SendStr("0")
+                # light_var = 0
+                # print("sent 1")
+            # else:
+            #     sent = xbee.SendStr("0")
                 # zb.tx_long_addr(frame='0x1', dest_addr='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='A0')
                 # zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="0")
-                light_var = 1
-                print("sent 0")
+                # light_var = 1
+                # print("sent 0")
 
-            time.sleep(2)
+            # time.sleep(2)
             # print(response)
             # print("Before Processing")
             # ser.reset_input_buffer()  # Clear the input buffer once we read the data
@@ -376,7 +376,7 @@ def resp_put(q):
             print("The program has ended by interrupt")
             continue
 
-    # ser.close()
+    ser.close()
 
 def main_loop():
     print("Receive Data is Running")
@@ -384,11 +384,11 @@ def main_loop():
     # resp_put_thread.setDaemon(True)
     resp_put_thread.start()
 
-    # resp_get_thread = Thread(target=resp_get, args=(resp_queue,))
+    resp_get_thread = Thread(target=resp_get, args=(resp_queue,))
     # resp_get_thread.setDaemon(True)
-    # resp_get_thread.start()
+    resp_get_thread.start()
 
-    # resp_queue.join()
+    resp_queue.join()
 
 if __name__ == '__main__':
     try:
