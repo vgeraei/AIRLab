@@ -214,6 +214,8 @@ def xbee_msg_decoder_sender(raw_msg, ser):
 
     ser.write(msg)
 
+
+
 def resp_proc(resp):
     print("Reading a response.")
     address = resp['source_addr_long']
@@ -356,13 +358,13 @@ def resp_put(q):
     while True:
         try:
             # print("Before reading")
-            # response = zb.wait_read_frame()
+            response = zb.wait_read_frame()
             # print("Message Sent")
-            # q.put(response)
+            q.put(response)
 
-            for x in range(0, 10):
-                xbee_msg_decoder_sender("7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 30 FD", ser)
-                time.sleep(1)
+            # for x in range(0, 10):
+                # xbee_msg_decoder_sender("7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 30 FD", ser)
+                # time.sleep(1)
 
 
             # print(response)
@@ -396,11 +398,11 @@ def main_loop():
     # resp_put_thread.setDaemon(True)
     resp_put_thread.start()
 
-    # resp_get_thread = Thread(target=resp_get, args=(resp_queue,))
+    resp_get_thread = Thread(target=resp_get, args=(resp_queue,))
     # resp_get_thread.setDaemon(True)
-    # resp_get_thread.start()
+    resp_get_thread.start()
 
-    # resp_queue.join()
+    resp_queue.join()
 
 if __name__ == '__main__':
     try:
