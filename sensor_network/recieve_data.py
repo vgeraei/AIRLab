@@ -357,9 +357,9 @@ def resp_put(q):
     light_var = 0
     while True:
         try:
-            # print("Before reading")
+            print("Before reading")
             response = zb.wait_read_frame()
-            # print("Message Sent")
+            print("Message Received")
             q.put(response)
 
             # for x in range(0, 10):
