@@ -45,6 +45,6 @@ urlpatterns = [
 import subprocess
 import atexit
 
-# receive_data = subprocess.Popen(["python", "sensor_network/recieve_data.py"])
-# atexit.register(exit_handler)
+receive_data = subprocess.Popen(["python", "sensor_network/recieve_data.py"])
+atexit.register(exit_handler)
 
