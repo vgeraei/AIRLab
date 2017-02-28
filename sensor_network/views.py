@@ -21,6 +21,7 @@ def change_number(request, num):
     return HttpResponse('Number of people has successfully changed')
 
 def switch_lights_off(request):
+    print("Lights off!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 30 FD"
     msg = "".join(raw_msg.split())
     msg = msg.decode("hex")
@@ -46,6 +47,7 @@ def switch_lights_off(request):
     return HttpResponse(status=200)
 
 def switch_lights_on(request):
+    print("Lights on!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 31 FC"
     msg = "".join(raw_msg.split())
     msg = msg.decode("hex")
