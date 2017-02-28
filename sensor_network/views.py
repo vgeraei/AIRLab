@@ -68,6 +68,7 @@ def switch_lights_on(request):
 
     ser.write(msg)
     ser.close()
+    return HttpResponse(status=200)
 
 @csrf_exempt
 def query_tmp(request):
