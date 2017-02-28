@@ -333,7 +333,7 @@ def resp_put(q):
     while True:
         try:
             ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
-            # print("connected")
+            print("Serial Port is open")
             break
         except:
             # print(usb_counter)
