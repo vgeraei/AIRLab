@@ -336,7 +336,7 @@ def resp_put(q):
             print("Serial Port is open")
             break
         except:
-            # print(usb_counter)
+            print(usb_counter)
             usb_counter = usb_counter + 1
 
     # while True:
