@@ -19,6 +19,14 @@ def view_home(request):
 def change_number(request, num):
     return HttpResponse('Number of people has successfully changed')
 
+def switch_lights_off(request):
+    print("Lights off!")
+    return HttpResponse(status=200)
+
+def switch_lights_on(request):
+    print("Lights on!")
+    return HttpResponse(status=200)
+
 @csrf_exempt
 def query_tmp(request):
     if request.method == "POST":

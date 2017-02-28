@@ -36,6 +36,8 @@ urlpatterns = [
     url(r'^sensors/change_number/$', save_test),
     url(r'^sensors/load_realtime/$', load_realtime_data),
     url(r'^sensors/query/$', query_tmp),
+    url(r'^sensors/lights_off/$', switch_lights_off),
+    url(r'^sensors/lights_on/$', switch_lights_on),
     url(r'^face/$', login),
     url(r'^smart_tile/$', view_smart_tile),
 ]
@@ -43,6 +45,6 @@ urlpatterns = [
 import subprocess
 import atexit
 
-receive_data = subprocess.Popen(["python", "sensor_network/recieve_data.py"])
-atexit.register(exit_handler)
+# receive_data = subprocess.Popen(["python", "sensor_network/recieve_data.py"])
+# atexit.register(exit_handler)
 

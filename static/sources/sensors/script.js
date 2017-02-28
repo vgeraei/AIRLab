@@ -2,6 +2,7 @@ var staticAddr = "http://172.20.27.94:8000/";
 var dst_data;
 var dst1, dst0;
 var statDisplayedID = "#stat0";
+var light_input = 1;
 
 $('.collapse').collapse();
 
@@ -213,7 +214,7 @@ function statButtons(){
 
             $(statDisplayedID).hide("fast", function(){
                 $("#stat0").show("fast");
-                 statDisplayedID = '#stat0';
+                statDisplayedID = '#stat0';
             });
 
         }
@@ -227,7 +228,7 @@ function statButtons(){
 
             $(statDisplayedID).hide("fast", function(){
                 $("#stat1").show("fast");
-                 statDisplayedID = '#stat1';
+                statDisplayedID = '#stat1';
             });
 
         }
@@ -241,7 +242,7 @@ function statButtons(){
 
             $(statDisplayedID).hide("fast", function(){
                 $("#stat2").show("fast");
-                 statDisplayedID = '#stat2';
+                statDisplayedID = '#stat2';
             });
         }
 
@@ -305,6 +306,32 @@ function test_query() {
     });
 }
 
+function switch_lights() {
+    return function inner_switch_lights() {
+        if (light_input) {
+            $.ajax({
+                url: '/sensors/lights_on/',
+                type: 'get',
+                success: function (data) {
+                    // console.log("1");
+                    $("#light-switch").html("On");
+                    light_input = 0;
+                }
+            });
+        } else {
+            $.ajax({
+                url: '/sensors/lights_off/',
+                type: 'get',
+                success: function (data) {
+                    // console.log("0");
+                    $("#light-switch").html("Off");
+                    light_input = 1;
+                }
+            });
+        }
+    }
+}
+
 $(document).ready( function() {
     load_realtime_data();
     test_query();
@@ -314,6 +341,8 @@ $(document).ready( function() {
     $('.subMenu').smint({
         'scrollSpeed' : 1000
     });
+
+    $("#switch_light_button").on('click', switch_lights());
 
     // var dd = $('.vticker').easyTicker({
     //     direction: 'up',
