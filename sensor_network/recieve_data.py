@@ -333,10 +333,10 @@ def resp_put(q):
     while True:
         try:
             ser = serial.Serial(PORT + str(usb_counter), BAUD_RATE)
-            print("Serial Port is open")
+            # print("Serial Port is open")
             break
         except:
-            print(usb_counter)
+            # print(usb_counter)
             usb_counter = usb_counter + 1
 
     # while True:
@@ -357,9 +357,9 @@ def resp_put(q):
     light_var = 0
     while True:
         try:
-            print("Before reading")
+            # print("Before reading")
             response = zb.wait_read_frame()
-            print("Message Received")
+            # print("Message Received")
             q.put(response)
 
             # for x in range(0, 10):
