@@ -5,6 +5,9 @@ from Queue import Queue
 from threading import Thread
 from collections import deque
 import time
+import signal
+import os
+
 
 
 
@@ -24,6 +27,7 @@ temp = 0
 light = 0
 number = 0
 address = 0
+ser = 0
 
 sensorNode1_received = 0
 sensorNode2_received = 0
@@ -38,6 +42,25 @@ sensor_addr3='\x00\x13\xa2\x00\x40\xe9\x97\xbe' #number
 resp_queue = Queue()
 id_counter = 0
 
+
+signal.signal(signal.SIGUSR1, receive_signal)
+signal.signal(signal.SIGUSR2, receive_signal)
+
+def switch_lights_on():
+    global ser
+    raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 31 FC"
+    msg = "".join(raw_msg.split())
+    msg = msg.decode("hex")
+
+    ser.write(msg)
+
+def switch_lights_off():
+    global ser
+    raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 30 FD"
+    msg = "".join(raw_msg.split())
+    msg = msg.decode("hex")
+
+    ser.write(msg)
 
 class XBee():
     RxBuff = bytearray()
@@ -322,6 +345,7 @@ def resp_get(q):
                 counter = counter + 1
 
 def resp_put(q):
+    global ser
     print("Response putter thread is running.")
     PORT = '/dev/ttyUSB'
     BAUD_RATE = 9600
@@ -393,6 +417,10 @@ def resp_put(q):
     ser.close()
 
 def main_loop():
+    received_counter = 0
+    f = open("recPID", "w+")
+    f.write("%d" % int(os.getpid()))
+    f.close()
     print("Receive Data is Running")
     # resp_put_thread = Thread(target=resp_put, args=(resp_queue,))
     # resp_put_thread.setDaemon(True)
