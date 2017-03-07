@@ -49,6 +49,7 @@ def switch_lights_on():
     msg = msg.decode("hex")
 
     ser.write(msg)
+    print("Function in recv: Lights onnnnnnnnnnnnnnnnnnn")
 
 def switch_lights_off():
     global ser
@@ -57,6 +58,7 @@ def switch_lights_off():
     msg = msg.decode("hex")
 
     ser.write(msg)
+    print("Function in recv: Lights offfffffffffffffffffffff")
 
 signal.signal(signal.SIGUSR1, switch_lights_on)
 signal.signal(signal.SIGUSR2, switch_lights_off)
