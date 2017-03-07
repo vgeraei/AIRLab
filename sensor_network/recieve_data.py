@@ -88,7 +88,7 @@ def resp_get(q):
                     print("Queue Cleared!")
             q.task_done()
             # print("Reading a response.")
-            address = resp['source_addr_long']
+            # address = resp['source_addr_long']
             # if (address==temp_sensor_address or address==temp_sensor_address2) :
             # if(True):
 
