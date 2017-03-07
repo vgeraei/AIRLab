@@ -24,6 +24,7 @@ def change_number(request, num):
 
 def switch_lights_off(request):
     print("Lights off!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    pid = 0
     with open('recPID', 'r') as f:
         pid = int(f.readline())
 
@@ -36,6 +37,7 @@ def switch_lights_off(request):
 
 def switch_lights_on(request):
     print("Lights on!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    pid = 0
     with open('recPID', 'r') as f:
         pid = int(f.readline())
 
