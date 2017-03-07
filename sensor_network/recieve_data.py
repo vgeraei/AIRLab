@@ -94,9 +94,7 @@ def resp_get(q):
 
 
             ###
-            # print(resp)
-
-            if resp['rf_data']:
+            if hasattr(resp, 'rf_data'):
                 global id_counter
                 rf_data = resp['rf_data']
                 rf_data = rf_data.replace('\x00', '')
