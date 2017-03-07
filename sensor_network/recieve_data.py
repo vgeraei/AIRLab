@@ -60,10 +60,6 @@ def switch_lights_off():
     ser.write(msg)
     print("Function in recv: Lights offfffffffffffffffffffff")
 
-signal.signal(signal.SIGUSR1, switch_lights_on)
-signal.signal(signal.SIGUSR2, switch_lights_off)
-
-
 
 def xbee_msg_decoder_sender(raw_msg, ser):
     msg = "".join(raw_msg.split())
@@ -210,6 +206,9 @@ def main_loop():
     f = open("recPID", "w+")
     f.write("%d" % int(os.getpid()))
     f.close()
+
+    signal.signal(signal.SIGUSR1, switch_lights_on)
+    signal.signal(signal.SIGUSR2, switch_lights_off)
     print("Receive Data is Running")
     resp_put_thread = Thread(target=resp_put, args=(resp_queue,))
     # resp_put_thread.setDaemon(True)
