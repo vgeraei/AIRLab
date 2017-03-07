@@ -138,6 +138,9 @@ def resp_put(q):
     # Open serial port
     usb_counter = 0
 
+    #Signals
+    signal.signal(signal.SIGUSR1, switch_lights_on)
+    signal.signal(signal.SIGUSR2, switch_lights_off)
 
     while True:
         try:
@@ -171,27 +174,7 @@ def resp_put(q):
             # print("Message Received")
             q.put(response)
 
-            # for x in range(0, 10):
-                # xbee_msg_decoder_sender("7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 30 FD", ser)
-                # time.sleep(1)
 
-
-            # print(response)
-            # if light_var:
-            #     sent = xbee.SendStr("1")
-                # zb.tx_long_addr(frame='0x1', dest_addr='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='A1')
-                # zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="1")
-                # light_var = 0
-                # print("sent 1")
-            # else:
-            #     sent = xbee.SendStr("0")
-                # zb.tx_long_addr(frame='0x1', dest_addr='\x00\x13\xa2\x00\x40\xc8\xe5\x22', data='A0')
-                # zb.send('tx', dest_addr_long='\x00\x13\xa2\x00\x40\xc8\xe5\x22', dest_addr='\xB2\x04', data="0")
-                # light_var = 1
-                # print("sent 0")
-
-            # time.sleep(2)
-            # print(response)
             # print("Before Processing")
             # ser.reset_input_buffer()  # Clear the input buffer once we read the data
             # ser.reset_output_buffer()
@@ -207,8 +190,6 @@ def main_loop():
     f.write("%d" % int(os.getpid()))
     f.close()
 
-    signal.signal(signal.SIGUSR1, switch_lights_on)
-    signal.signal(signal.SIGUSR2, switch_lights_off)
     print("Receive Data is Running")
     resp_put_thread = Thread(target=resp_put, args=(resp_queue,))
     # resp_put_thread.setDaemon(True)
