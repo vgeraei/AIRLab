@@ -94,45 +94,46 @@ def resp_get(q):
 
 
             ###
-            print(resp)
-            #
-            # global id_counter
-            # rf_data = resp['rf_data']
-            # rf_data = rf_data.replace('\x00', '')
-            # rf_data = rf_data.strip()
-            # # name = rf_data[0:3]
-            # print((rf_data))
-            # # print(rf_data[4:len(rf_data)])
-            #
-            # wordList = rf_data.split()
-            # counter = 0
-            # word = 'ABC'
-            # value = 0
-            #
-            # for item in wordList:
-            #     if (counter % 2) == 0:
-            #         word = item
-            #     else:
-            #         value = item
-            #         d = datetime.now()
-            #         try:
-            #             c.execute('INSERT INTO sensor_network_sensor VALUES (?,?,?,?)', [id_counter, value, word, d])
-            #         except:
-            #             print("Database error")
-            #         # print(id_counter)
-            #         id_counter = id_counter + 1
-            #         conn.commit()
-            #         realtime_data[word] = value
-            #         realtime_json = json.dumps(realtime_data)
-            #
-            #         try:
-            #             with open('realtime_data.json', 'w') as outfile:
-            #                 json.dump(realtime_json, outfile)
-            #         except:
-            #             print("Opening JSON error")
-            #             # print(realtime_data)
-            #
-            #     counter = counter + 1
+            # print(resp)
+
+            if resp['rf_data']:
+                global id_counter
+                rf_data = resp['rf_data']
+                rf_data = rf_data.replace('\x00', '')
+                rf_data = rf_data.strip()
+                # name = rf_data[0:3]
+                print((rf_data))
+                # print(rf_data[4:len(rf_data)])
+
+                wordList = rf_data.split()
+                counter = 0
+                word = 'ABC'
+                value = 0
+
+                for item in wordList:
+                    if (counter % 2) == 0:
+                        word = item
+                    else:
+                        value = item
+                        d = datetime.now()
+                        try:
+                            c.execute('INSERT INTO sensor_network_sensor VALUES (?,?,?,?)', [id_counter, value, word, d])
+                        except:
+                            print("Database error")
+                        # print(id_counter)
+                        id_counter = id_counter + 1
+                        conn.commit()
+                        realtime_data[word] = value
+                        realtime_json = json.dumps(realtime_data)
+
+                        try:
+                            with open('realtime_data.json', 'w') as outfile:
+                                json.dump(realtime_json, outfile)
+                        except:
+                            print("Opening JSON error")
+                            # print(realtime_data)
+
+                    counter = counter + 1
 
 def resp_put(q):
     global ser
