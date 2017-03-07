@@ -42,7 +42,7 @@ sensor_addr3='\x00\x13\xa2\x00\x40\xe9\x97\xbe' #number
 resp_queue = Queue()
 id_counter = 0
 
-def switch_lights_on():
+def switch_lights_on(self, pid):
     global ser
     raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 31 FC"
     msg = "".join(raw_msg.split())
@@ -51,7 +51,7 @@ def switch_lights_on():
     ser.write(msg)
     print("Function in recv: Lights onnnnnnnnnnnnnnnnnnn")
 
-def switch_lights_off():
+def switch_lights_off(self, pid):
     global ser
     raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 30 FD"
     msg = "".join(raw_msg.split())
