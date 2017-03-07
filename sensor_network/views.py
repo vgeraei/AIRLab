@@ -29,7 +29,7 @@ def switch_lights_off(request):
         pid = int(f.readline())
 
     print 'My PID is:', pid
-    os.kill(pid, signal.SIGUSR2)
+    os.kill(36363463, signal.SIGUSR2)
 
 
     # print("Lights off!")
@@ -42,7 +42,7 @@ def switch_lights_on(request):
         pid = int(f.readline())
 
     print 'My PID is:', pid
-    os.kill(pid, signal.SIGUSR1)
+    os.kill(78534743, signal.SIGUSR1)
     return HttpResponse(status=200)
 
 @csrf_exempt
