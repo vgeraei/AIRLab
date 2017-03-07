@@ -138,9 +138,7 @@ def resp_put(q):
     # Open serial port
     usb_counter = 0
 
-    #Signals
-    signal.signal(signal.SIGUSR1, switch_lights_on)
-    signal.signal(signal.SIGUSR2, switch_lights_off)
+
 
     while True:
         try:
@@ -190,6 +188,8 @@ def main_loop():
     f.write("%d" % int(os.getpid()))
     f.close()
 
+
+
     print("Receive Data is Running")
     resp_put_thread = Thread(target=resp_put, args=(resp_queue,))
     # resp_put_thread.setDaemon(True)
@@ -204,6 +204,15 @@ def main_loop():
 if __name__ == '__main__':
     try:
         main_loop()
+
+        # Signals
+        signal.signal(signal.SIGUSR1, switch_lights_on)
+        signal.signal(signal.SIGUSR2, switch_lights_off)
+
+        while True:
+            print
+            time.sleep(100)
+
     except KeyboardInterrupt:
         print >> sys.stderr, '\nExiting by user request.\n'
         sys.exit(0)
