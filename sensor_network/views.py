@@ -27,7 +27,7 @@ def switch_lights_off(request):
     with open('recPID', 'r') as f:
         pid = int(f.readline())
 
-    os.kill(pid, signal.SIGUSR1)
+    os.kill(pid, signal.SIGUSR2)
 
 
     # print("Lights off!")
@@ -39,7 +39,7 @@ def switch_lights_on(request):
         pid = int(f.readline())
 
 
-    os.kill(pid, signal.SIGUSR2)
+    os.kill(pid, signal.SIGUSR1)
     return HttpResponse(status=200)
 
 @csrf_exempt

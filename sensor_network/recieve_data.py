@@ -42,10 +42,6 @@ sensor_addr3='\x00\x13\xa2\x00\x40\xe9\x97\xbe' #number
 resp_queue = Queue()
 id_counter = 0
 
-
-signal.signal(signal.SIGUSR1, receive_signal)
-signal.signal(signal.SIGUSR2, receive_signal)
-
 def switch_lights_on():
     global ser
     raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 31 FC"
@@ -61,6 +57,11 @@ def switch_lights_off():
     msg = msg.decode("hex")
 
     ser.write(msg)
+
+signal.signal(signal.SIGUSR1, switch_lights_on)
+signal.signal(signal.SIGUSR2, switch_lights_off)
+
+
 
 class XBee():
     RxBuff = bytearray()
