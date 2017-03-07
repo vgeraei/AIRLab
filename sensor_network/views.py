@@ -23,12 +23,10 @@ def change_number(request, num):
     return HttpResponse('Number of people has successfully changed')
 
 def switch_lights_off(request):
-    print("Lights off!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     pid = 0
     with open('recPID', 'r') as f:
         pid = int(f.readline())
 
-    print 'My PID is:', pid
     os.kill(pid, signal.SIGUSR2)
 
 
@@ -36,12 +34,10 @@ def switch_lights_off(request):
     return HttpResponse(status=200)
 
 def switch_lights_on(request):
-    print("Lights on!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     pid = 0
     with open('recPID', 'r') as f:
         pid = int(f.readline())
 
-    print 'My PID is:', pid
     os.kill(pid, signal.SIGUSR1)
     return HttpResponse(status=200)
 

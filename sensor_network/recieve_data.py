@@ -49,7 +49,6 @@ def switch_lights_on(self, pid):
     msg = msg.decode("hex")
 
     ser.write(msg)
-    print("Function in recv: Lights onnnnnnnnnnnnnnnnnnn")
 
 def switch_lights_off(self, pid):
     global ser
@@ -58,7 +57,6 @@ def switch_lights_off(self, pid):
     msg = msg.decode("hex")
 
     ser.write(msg)
-    print("Function in recv: Lights offfffffffffffffffffffff")
 
 
 def xbee_msg_decoder_sender(raw_msg, ser):
@@ -80,7 +78,7 @@ def resp_get(q):
         id_counter = 1
     while True:
         if not q.empty():
-            print("Lenght of Q: {0}".format(q.qsize()))
+            # print("Lenght of Q: {0}".format(q.qsize()))
             resp = q.get()
             if q.qsize() > 50:
                 with q.mutex:
@@ -214,7 +212,6 @@ if __name__ == '__main__':
         signal.signal(signal.SIGUSR2, switch_lights_off)
 
         while True:
-            print
             time.sleep(100)
 
     except KeyboardInterrupt:
