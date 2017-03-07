@@ -27,6 +27,7 @@ def switch_lights_off(request):
     with open('recPID', 'r') as f:
         pid = int(f.readline())
 
+    print 'My PID is:', pid
     os.kill(pid, signal.SIGUSR2)
 
 
@@ -38,7 +39,7 @@ def switch_lights_on(request):
     with open('recPID', 'r') as f:
         pid = int(f.readline())
 
-
+    print 'My PID is:', pid
     os.kill(pid, signal.SIGUSR1)
     return HttpResponse(status=200)
 
