@@ -73,8 +73,10 @@ def xbee_msg_decoder_sender(raw_msg, ser):
 
 def update_realtime_JSON():
     global realtime_data
+    print("Update realtime data is running!")
 
     while True:
+        print("updated")
         time.sleep(1)
         realtime_json = json.dumps(realtime_data)
 
