@@ -15,7 +15,7 @@ import serial
 # Create your views here.
 def view_home(request):
     print("Welcome Home!")
-    return render(request, 'sensors.html')
+    return render(request, 'SensorUI.html')
 
 def change_number(request, num):
     return HttpResponse('Number of people has successfully changed')

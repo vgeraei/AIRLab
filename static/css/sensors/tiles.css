@@ -1,0 +1,70 @@
+body{
+    background-color: #E1E7EC;
+}
+h4{
+    margin: 0;
+    padding-top: 20px;
+    text-align: center;
+}
+.main-container{
+    font-family: 'Ubuntu', sans-serif;
+    width: 950px;
+    margin: 3em auto;
+}
+.container{
+    float: left;
+}
+.left-container{
+    width: 300px;
+}
+.middle-container{
+    width: 300px;
+    margin: 0 25px;
+}
+.right-cointainer{
+    width: 300px;
+}
+.block{
+
+    background-color: white;
+    margin-bottom: 10px
+}
+.humidity{
+    height: 364px;
+}
+.door{
+    width: 282px;
+    height: 272px;
+}
+.temperature{
+    width: 282px;
+    height: 272px;
+}
+.light-key{
+    height: 272px;
+}
+.light-info{
+
+    width: 282px;
+    height: 176px;
+}
+.people {
+    width: 282px;
+    height: 364px;
+}
+hr.divider{
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+.airlab-copyright{
+    display: table-cell;
+    color:lightslategray;
+    height: 120px;
+    width: 282px;
+    text-align: center;
+    vertical-align: bottom;
+}

@@ -1,90 +1,181 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Informative Board</title>
-	<style type="text/css">
-	body{
-		background-color: #E1E7EC;
-	}
-	.main-container{
-		font-family: 'Ubuntu', sans-serif;
-		width: 950px;
-		margin: 3em auto;
-	}
-	.container{
-		float: left;
-	}
-	.left-container{
-		width: 300px;
-	}
-	.middle-container{
-		width: 300px;
-		margin: 0 25px;
-	}
-	.right-cointainer{
-		width: 300px;
-	}
-	.block{
-
-		background-color: white;
-		margin-bottom: 10px
-	}
-	.humidity{
-		height: 364px;
-	}
-	.door{
-		width: 282px;
-		height: 272px;
-	}
-	.temperature{
-		width: 282px;
-		height: 272px;
-	}
-	.light-key{
-		height: 272px;
-	}
-	.light-info{
-
-		width: 282px;
-		height: 176px;
-	}
-	.people{
-		width: 282px;
-		height: 364px;
-	}
-	</style>
+	<link rel="stylesheet" href="{% static 'css/sensors/tiles.css' %}">
 </head>
 <body>
 	<div class="main-container">
 		<div class="left-container container">
 			<div class="block humidity">
-				humidity
+				<h4>Humidity</h4>
+                <br>
+                <hr class="divider">
+                    <div id="container" style="margin: 0 auto; height: 230px; width: 300px;">
+                    </div>
 			</div>
 			<div class="block light-key">
-					light key
+                <h4>light Key</h4>
+                <br>
+                <hr class="divider">
 			</div>
 		</div>
 		
 		<div class="middle-container container">
 			<div class="block door">
-				door
+                <h4>Door</h4>
+                <br>
+                <hr class="divider">
 			</div>
 			<div class="block light-info">
-				light info
+                <h4>light Info</h4>
+                <br>
+                <hr class="divider">
+			</div>
+            <div class="airlab-copyright">
+               AIRLab Corporation <br> Copyright 2017
 			</div>
 		</div>
 		
 		<div class="right-container container">
 			<div class="block temperature">
-				temperature
+                <h4>Temperature</h4>
+                <br>
+                <hr class="divider">
 			</div>
 		
 			<div class="block people">
-				people
+                <h4>People</h4>
+                <br>
+                <hr class="divider">
 			</div>
 		</div>
 		
 	</div>
 
 </body>
+
+<script type="text/javascript" src="{% static 'sources/highcharts/highcharts.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/highcharts/highcharts-more.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/highcharts/modules/solid-gauge.js' %}"></script>
+<script type="text/javascript">
+    Highcharts.chart('container', {
+
+    chart: {
+        type: 'solidgauge',
+        marginTop: 0
+    },
+
+    title: {
+        text: null,
+        style: {
+            fontSize: '14px'
+        }
+    },
+
+    credits: {
+      enabled: false
+  },
+    tooltip: {
+        enabled: true,
+        borderWidth: 0,
+        backgroundColor: 'none',
+        shadow: false,
+        style: {
+            fontSize: '12px'
+        },
+        pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}%</span>',
+        positioner: function (labelWidth) {
+            return {
+                x: 150 - labelWidth / 2,
+                y: 80
+            };
+        }
+    },
+
+    pane: {
+        startAngle: 0,
+        endAngle: 360,
+        background: [{ // Track for Humidity
+            outerRadius: '112%',
+            innerRadius: '88%',
+            backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.3).get(),
+            borderWidth: 0
+        }]
+    },
+
+    yAxis: {
+        min: 0,
+        max: 100,
+        lineWidth: 0,
+        tickPositions: []
+    },
+
+    plotOptions: {
+
+        solidgauge: {
+            dataLabels: {
+                enabled: false
+            },
+            linecap: 'round',
+            stickyTracking: false,
+            rounded: true
+        }
+    },
+
+    series: [{
+        name: 'Humidity',
+        borderColor: Highcharts.getOptions().colors[0],
+        data: [{
+            color: Highcharts.getOptions().colors[0],
+            radius: '112%',
+            innerRadius: '88%',
+            y: 80
+        }]
+    }]
+},
+
+/**
+ * In the chart load callback, add icons on top of the circular shapes
+ */
+function callback() {
+
+    this.renderer.path(['M', -8, 0])
+        .attr({
+            'stroke': '#303030',
+            'stroke-linecap': 'round',
+            'stroke-linejoin': 'round',
+            'stroke-width': 2,
+            'zIndex': 10
+        })
+        .translate(190, 26)
+        .add(this.series[2].group);
+
+    // Exercise icon
+    this.renderer.path(['M', -8, 0])
+        .attr({
+            'stroke': '#303030',
+            'stroke-linecap': 'round',
+            'stroke-linejoin': 'round',
+            'stroke-width': 2,
+            'zIndex': 10
+        })
+        .translate(190, 61)
+        .add(this.series[2].group);
+
+    // Stand icon
+    this.renderer.path(['M', 0, 8])
+        .attr({
+            'stroke': '#303030',
+            'stroke-linecap': 'round',
+            'stroke-linejoin': 'round',
+            'stroke-width': 2,
+            'zIndex': 10
+        })
+        .translate(190, 96)
+        .add(this.series[2].group);
+});
+
+</script>
 </html>
