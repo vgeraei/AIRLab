@@ -198,8 +198,8 @@ def resp_put(q):
 
 
             # print("Before Processing")
-            # ser.reset_input_buffer()  # Clear the input buffer once we read the data
-            # ser.reset_output_buffer()
+            ser.reset_input_buffer()  # Clear the input buffer once we read the data
+            ser.reset_output_buffer()
         except KeyboardInterrupt:
             print("The program has ended by interrupt")
             continue
