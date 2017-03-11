@@ -43,13 +43,13 @@ resp_queue = Queue()
 id_counter = 0
 
 def switch_lights_on(self, pid):
-    global ser
+    # global ser
     global realtime_data
-    raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 31 FC"
-    msg = "".join(raw_msg.split())
-    msg = msg.decode("hex")
-
-    ser.write(msg)
+    # raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 31 FC"
+    # msg = "".join(raw_msg.split())
+    # msg = msg.decode("hex")
+    #
+    # ser.write(msg)
 
     realtime_data['LST'] = "1"
     realtime_json = json.dumps(realtime_data)
@@ -62,13 +62,13 @@ def switch_lights_on(self, pid):
         # print(realtime_data)
 
 def switch_lights_off(self, pid):
-    global ser
+    # global ser
     global realtime_data
-    raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 30 FD"
-    msg = "".join(raw_msg.split())
-    msg = msg.decode("hex")
-
-    ser.write(msg)
+    # raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 30 FD"
+    # msg = "".join(raw_msg.split())
+    # msg = msg.decode("hex")
+    #
+    # ser.write(msg)
 
     realtime_data['LST'] = "0"
     realtime_json = json.dumps(realtime_data)
