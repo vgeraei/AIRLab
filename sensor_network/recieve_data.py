@@ -114,7 +114,7 @@ def resp_get(q):
             print(resp)
 
             ###
-            if 'rf_data' in resp:
+            if resp['id'] == 'rx_explicit':
                 global id_counter
                 rf_data = resp['rf_data']
                 rf_data = rf_data.replace('\x00', '')
