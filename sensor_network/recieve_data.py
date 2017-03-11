@@ -52,14 +52,6 @@ def switch_lights_on(self, pid):
     # ser.write(msg)
 
     realtime_data['LST'] = "1"
-    realtime_json = json.dumps(realtime_data)
-
-    try:
-        with open('realtime_data.json', 'w') as outfile:
-            json.dump(realtime_json, outfile)
-    except:
-        print("Opening JSON error in lights on.")
-        # print(realtime_data)
 
 def switch_lights_off(self, pid):
     # global ser
@@ -71,14 +63,6 @@ def switch_lights_off(self, pid):
     # ser.write(msg)
 
     realtime_data['LST'] = "0"
-    realtime_json = json.dumps(realtime_data)
-
-    try:
-        with open('realtime_data.json', 'w') as outfile:
-            json.dump(realtime_json, outfile)
-    except:
-        print("Opening JSON error in lights off.")
-        # print(realtime_data)
 
 
 def xbee_msg_decoder_sender(raw_msg, ser):
@@ -86,6 +70,20 @@ def xbee_msg_decoder_sender(raw_msg, ser):
     msg = msg.decode("hex")
 
     ser.write(msg)
+
+def update_realtime_JSON():
+    global realtime_data
+
+    while True:
+        time.sleep(1)
+        realtime_json = json.dumps(realtime_data)
+
+        try:
+            with open('realtime_data.json', 'w') as outfile:
+                json.dump(realtime_json, outfile)
+        except:
+            print("Opening JSON error in lights off.")
+            # print(realtime_data)
 
 def resp_get(q):
     print("Response getter thread is running.")
@@ -142,14 +140,6 @@ def resp_get(q):
                         id_counter = id_counter + 1
                         conn.commit()
                         realtime_data[word] = value
-                        realtime_json = json.dumps(realtime_data)
-
-                        try:
-                            with open('realtime_data.json', 'w') as outfile:
-                                json.dump(realtime_json, outfile)
-                        except:
-                            print("Opening JSON error")
-                            # print(realtime_data)
 
                     counter = counter + 1
 
@@ -222,6 +212,10 @@ def main_loop():
     resp_get_thread = Thread(target=resp_get, args=(resp_queue,))
     # resp_get_thread.setDaemon(True)
     resp_get_thread.start()
+
+    update_realtime_json_thread = Thread(target=update_realtime_JSON)
+    # resp_get_thread.setDaemon(True)
+    update_realtime_json_thread.start()
 
     resp_queue.join()
 
