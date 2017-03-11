@@ -290,7 +290,7 @@ function load_realtime_data(){
             $("#light-switch").html((parseInt(data['LST']))?("On"):("Off"));
         },
     });
-    setTimeout(load_realtime_data, 1000);
+    setTimeout(load_realtime_data, 2000);
 };
 
 function test_query() {

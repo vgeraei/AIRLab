@@ -42,6 +42,7 @@ sensor_addr3='\x00\x13\xa2\x00\x40\xe9\x97\xbe' #number
 resp_queue = Queue()
 id_counter = 0
 
+
 def switch_lights_on(self, pid):
     # global ser
     global realtime_data
