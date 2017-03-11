@@ -22,7 +22,7 @@ import serial
 import time
 from xbee import XBee, ZigBee
 
-realtime_data={'TMP':"23",'LUM':"4.5",'HUM':"3",'NUM':"2",'DST':"0", "PIR":"0"}
+realtime_data={'TMP':"23",'LUM':"4.5",'HUM':"3",'NUM':"2",'DST':"0", "PIR":"0", 'LST':"0"}
 temp = 0
 light = 0
 number = 0
@@ -44,19 +44,41 @@ id_counter = 0
 
 def switch_lights_on(self, pid):
     global ser
+    global realtime_data
     raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 31 FC"
     msg = "".join(raw_msg.split())
     msg = msg.decode("hex")
 
     ser.write(msg)
 
+    realtime_data['LST'] = "1"
+    realtime_json = json.dumps(realtime_data)
+
+    try:
+        with open('realtime_data.json', 'w') as outfile:
+            json.dump(realtime_json, outfile)
+    except:
+        print("Opening JSON error in lights on.")
+        # print(realtime_data)
+
 def switch_lights_off(self, pid):
     global ser
+    global realtime_data
     raw_msg = "7E 00 0F 10 01 00 13 A2 00 40 C8 E5 22 FF FE 00 00 30 FD"
     msg = "".join(raw_msg.split())
     msg = msg.decode("hex")
 
     ser.write(msg)
+
+    realtime_data['LST'] = "0"
+    realtime_json = json.dumps(realtime_data)
+
+    try:
+        with open('realtime_data.json', 'w') as outfile:
+            json.dump(realtime_json, outfile)
+    except:
+        print("Opening JSON error in lights off.")
+        # print(realtime_data)
 
 
 def xbee_msg_decoder_sender(raw_msg, ser):

@@ -2,7 +2,7 @@ var staticAddr = "http://172.20.27.94:8000/";
 var dst_data;
 var dst1, dst0;
 var statDisplayedID = "#stat0";
-var light_input = 1;
+// var light_input = 1;
 
 $('.collapse').collapse();
 
@@ -287,6 +287,7 @@ function load_realtime_data(){
             $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
             $("#light").html(data['LUM']);
             $("#pir").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
+            $("#light-switch").html((parseInt(data['LST']))?("On"):("Off"));
         },
     });
     setTimeout(load_realtime_data, 1000);
@@ -308,14 +309,13 @@ function test_query() {
 
 function switch_lights() {
     return function inner_switch_lights() {
-        if (light_input) {
+        if ($("#light-switch").text() == "Off") {
             $.ajax({
                 url: '/sensors/lights_on/',
                 type: 'get',
                 success: function (data) {
                     // console.log("1");
                     $("#light-switch").html("On");
-                    light_input = 0;
                 }
             });
         } else {
@@ -325,7 +325,6 @@ function switch_lights() {
                 success: function (data) {
                     // console.log("0");
                     $("#light-switch").html("Off");
-                    light_input = 1;
                 }
             });
         }
