@@ -111,7 +111,7 @@ def resp_get(q):
             # address = resp['source_addr_long']
             # if (address==temp_sensor_address or address==temp_sensor_address2) :
             # if(True):
-
+            print(resp)
 
             ###
             if 'rf_data' in resp:
