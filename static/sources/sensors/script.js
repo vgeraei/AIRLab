@@ -3,6 +3,7 @@ var dst_data;
 var dst1, dst0;
 var statDisplayedID = "#stat0";
 // var light_input = 1;
+var lights_updated_time = 0;
 
 $('.collapse').collapse();
 
@@ -287,7 +288,9 @@ function load_realtime_data(){
             $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
             $("#light").html(data['LUM']);
             $("#pir").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
-            $("#light-switch").html((parseInt(data['LST']))?("On"):("Off"));
+            if ( Math.floor((new Date() - lights_updated_time)/1000) > 3 ) {
+                $("#light-switch").html((parseInt(data['LST'])) ? ("On") : ("Off"));
+            }
         },
     });
     setTimeout(load_realtime_data, 1000);
@@ -315,7 +318,8 @@ function switch_lights() {
                 type: 'get',
                 success: function (data) {
                     // console.log("1");
-                    // $("#light-switch").html("On");
+                    lights_updated_time = new Date();
+                    $("#light-switch").html("On");
                 }
             });
         } else {
@@ -323,8 +327,9 @@ function switch_lights() {
                 url: '/sensors/lights_off/',
                 type: 'get',
                 success: function (data) {
+                    lights_updated_time = new Date();
                     // console.log("0");
-                    // $("#light-switch").html("Off");
+                    $("#light-switch").html("Off");
                 }
             });
         }
