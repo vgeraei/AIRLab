@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Informative Board</title>
-	<link rel="stylesheet" href="{% static 'css/sensors/tiles.css' %}">
+	<link rel="stylesheet" href="{% static 'css/sensors/new_ui_style.css' %}">
 </head>
 <body>
 	<div class="main-container">
@@ -27,11 +27,19 @@
                 <h4>Door</h4>
                 <br>
                 <hr class="divider">
+
+                <div class="door-state">
+                    Open
+                </div>
 			</div>
 			<div class="block light-info">
                 <h4>light Info</h4>
                 <br>
                 <hr class="divider">
+                <div class="light-state">
+                     <img id="light-icon" src="{% static 'images/icons/light.svg' %}">
+                     <label>85%</label>
+                 </div>
 			</div>
             <div class="airlab-copyright">
                AIRLab Corporation <br> Copyright 2017
@@ -83,13 +91,13 @@
         backgroundColor: 'none',
         shadow: false,
         style: {
-            fontSize: '12px'
+            fontSize: '22px'
         },
         pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}%</span>',
         positioner: function (labelWidth) {
             return {
                 x: 150 - labelWidth / 2,
-                y: 80
+                y: 65
             };
         }
     },
