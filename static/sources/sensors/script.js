@@ -290,7 +290,7 @@ function load_realtime_data(){
             $("#light-switch").html((parseInt(data['LST']))?("On"):("Off"));
         },
     });
-    setTimeout(load_realtime_data, 2000);
+    setTimeout(load_realtime_data, 1000);
 };
 
 function test_query() {
@@ -315,7 +315,7 @@ function switch_lights() {
                 type: 'get',
                 success: function (data) {
                     // console.log("1");
-                    $("#light-switch").html("On");
+                    // $("#light-switch").html("On");
                 }
             });
         } else {
@@ -324,7 +324,7 @@ function switch_lights() {
                 type: 'get',
                 success: function (data) {
                     // console.log("0");
-                    $("#light-switch").html("Off");
+                    // $("#light-switch").html("Off");
                 }
             });
         }
