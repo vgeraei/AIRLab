@@ -77,7 +77,7 @@ def update_realtime_JSON():
     print("Update realtime data is running!")
 
     while True:
-        print("updated")
+        # print("updated")
         time.sleep(1)
         realtime_json = json.dumps(realtime_data)
 
