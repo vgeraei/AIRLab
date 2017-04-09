@@ -184,11 +184,11 @@ def resp_put(q):
     light_var = 0
     while True:
         try:
-            print("Before reading")
+            # print("Before reading")
             response = zb.wait_read_frame()
-            print("Message Received")
+            # print("Message Received")
             q.put(response)
-            print("After Q")
+            # print("After Q")
             ser.reset_input_buffer()  # Clear the input buffer once we read the data
             ser.reset_output_buffer()
         except KeyboardInterrupt:
