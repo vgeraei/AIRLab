@@ -74,7 +74,7 @@
 <script type="text/javascript">
 
     var humidity = 10;
-    Highcharts.chart('container', {
+    my_chart = Highcharts.chart('container', {
 
     chart: {
         type: 'solidgauge',
@@ -164,7 +164,7 @@ function callback() {
             'zIndex': 10
         })
         .translate(190, 26)
-        .add(this.series[2].group);
+        .add(this.series[0].group);
 
     // Exercise icon
     this.renderer.path(['M', -8, 0])
@@ -176,7 +176,7 @@ function callback() {
             'zIndex': 10
         })
         .translate(190, 61)
-        .add(this.series[2].group);
+        .add(this.series[0].group);
 
     // Stand icon
     this.renderer.path(['M', 0, 8])
@@ -188,13 +188,9 @@ function callback() {
             'zIndex': 10
         })
         .translate(190, 96)
-        .add(this.series[2].group);
+        .add(this.series[0].group);
 });
 
-
-</script>
-
-<script type="text/javascript">
     load_realtime_data();
     function load_realtime_data(){
         console.log("everything is going well.")
@@ -207,7 +203,16 @@ function callback() {
             $("#temp").html(data['TMP']+' °C');
 {#            $("#hum").html(data['HUM']);#}
             humidity = parseInt(data['HUM']);
-            console.log(humidity)
+            my_chart.series[0].setData([{
+            color: Highcharts.getOptions().colors[0],
+            radius: '112%',
+            innerRadius: '88%',
+            y: humidity
+        }], false);
+
+           my_chart.redraw();
+
+
             $("#number").html(data['NUM']); //not set yet
             $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
             $("#light").html(data['LUM']);
