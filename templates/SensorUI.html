@@ -207,6 +207,7 @@ function callback() {
             $("#temp").html(data['TMP']+' °C');
 {#            $("#hum").html(data['HUM']);#}
             humidity = parseInt(data['HUM']);
+            console.log(humidity)
             $("#number").html(data['NUM']); //not set yet
             $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
             $("#light").html(data['LUM']);
