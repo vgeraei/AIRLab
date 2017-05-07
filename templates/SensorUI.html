@@ -28,7 +28,7 @@
                 <br>
                 <hr class="divider">
 
-                <div class="door-state">
+                <div class="door-state" id="door_status">
                     Open
                 </div>
 			</div>
@@ -38,7 +38,7 @@
                 <hr class="divider">
                 <div class="light-state">
                      <img id="light-icon" src="{% static 'images/icons/light.svg' %}">
-                     <label>85%</label>
+                     <label id="light"></label>
                  </div>
 			</div>
             <div class="airlab-copyright">
@@ -52,13 +52,14 @@
                 <br>
                 <hr class="divider">
 
-                <span id="temp"> 23 &#8451;</span>
+                <span><label id="temp"></label> &#8451;</span>
 			</div>
 		
 			<div class="block people">
                 <h4>People</h4>
                 <br>
                 <hr class="divider">
+                <label id="pir"></label>
 			</div>
 		</div>
 		
@@ -71,6 +72,8 @@
 <script type="text/javascript" src="{% static 'sources/highcharts/modules/solid-gauge.js' %}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+    var humidity = 0;
     Highcharts.chart('container', {
 
     chart: {
@@ -142,7 +145,7 @@
             color: Highcharts.getOptions().colors[0],
             radius: '112%',
             innerRadius: '88%',
-            y: 80
+            y: humidity
         }]
     }]
 },
@@ -202,8 +205,9 @@ function callback() {
         cache: false,
         success: function (data) {
             $("#temp").html(data['TMP']+' °C');
-            $("#hum").html(data['HUM']);
-            $("#number").html(data['NUM']);
+{#            $("#hum").html(data['HUM']);#}
+            humidity = parseInt(data['HUM']);
+            $("#number").html(data['NUM']); //not set yet
             $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
             $("#light").html(data['LUM']);
             $("#pir").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
