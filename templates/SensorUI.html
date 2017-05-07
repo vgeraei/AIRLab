@@ -1,0 +1,216 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Informative Board</title>
+	<link rel="stylesheet" href="{% static 'css/sensors/new_ui_style.css' %}">
+</head>
+<body>
+	<div class="main-container">
+		<div class="left-container container">
+			<div class="block humidity">
+				<h4>Humidity</h4>
+                <br>
+                <hr class="divider">
+                    <div id="container" style="margin: 0 auto; height: 230px; width: 300px;">
+                    </div>
+			</div>
+			<div class="block light-key">
+                <h4>light Key</h4>
+                <br>
+                <hr class="divider">
+			</div>
+		</div>
+		
+		<div class="middle-container container">
+			<div class="block door">
+                <h4>Door</h4>
+                <br>
+                <hr class="divider">
+
+                <div class="door-state">
+                    Open
+                </div>
+			</div>
+			<div class="block light-info">
+                <h4>light Info</h4>
+                <br>
+                <hr class="divider">
+                <div class="light-state">
+                     <img id="light-icon" src="{% static 'images/icons/light.svg' %}">
+                     <label>85%</label>
+                 </div>
+			</div>
+            <div class="airlab-copyright">
+               AIRLab Corporation <br> Copyright 2017
+			</div>
+		</div>
+		
+		<div class="right-container container">
+			<div class="block temperature">
+                <h4>Temperature</h4>
+                <br>
+                <hr class="divider">
+
+                <span id="temp"> 23 &#8451;</span>
+			</div>
+		
+			<div class="block people">
+                <h4>People</h4>
+                <br>
+                <hr class="divider">
+			</div>
+		</div>
+		
+	</div>
+
+</body>
+
+<script type="text/javascript" src="{% static 'sources/highcharts/highcharts.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/highcharts/highcharts-more.js' %}"></script>
+<script type="text/javascript" src="{% static 'sources/highcharts/modules/solid-gauge.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    Highcharts.chart('container', {
+
+    chart: {
+        type: 'solidgauge',
+        marginTop: 0
+    },
+
+    title: {
+        text: null,
+        style: {
+            fontSize: '14px'
+        }
+    },
+
+    credits: {
+      enabled: false
+  },
+    tooltip: {
+        enabled: true,
+        borderWidth: 0,
+        backgroundColor: 'none',
+        shadow: false,
+        style: {
+            fontSize: '22px'
+        },
+        pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}%</span>',
+        positioner: function (labelWidth) {
+            return {
+                x: 150 - labelWidth / 2,
+                y: 65
+            };
+        }
+    },
+
+    pane: {
+        startAngle: 0,
+        endAngle: 360,
+        background: [{ // Track for Humidity
+            outerRadius: '112%',
+            innerRadius: '88%',
+            backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.3).get(),
+            borderWidth: 0
+        }]
+    },
+
+    yAxis: {
+        min: 0,
+        max: 100,
+        lineWidth: 0,
+        tickPositions: []
+    },
+
+    plotOptions: {
+
+        solidgauge: {
+            dataLabels: {
+                enabled: false
+            },
+            linecap: 'round',
+            stickyTracking: false,
+            rounded: true
+        }
+    },
+
+    series: [{
+        name: 'Humidity',
+        borderColor: Highcharts.getOptions().colors[0],
+        data: [{
+            color: Highcharts.getOptions().colors[0],
+            radius: '112%',
+            innerRadius: '88%',
+            y: 80
+        }]
+    }]
+},
+
+/**
+ * In the chart load callback, add icons on top of the circular shapes
+ */
+function callback() {
+
+    this.renderer.path(['M', -8, 0])
+        .attr({
+            'stroke': '#303030',
+            'stroke-linecap': 'round',
+            'stroke-linejoin': 'round',
+            'stroke-width': 2,
+            'zIndex': 10
+        })
+        .translate(190, 26)
+        .add(this.series[2].group);
+
+    // Exercise icon
+    this.renderer.path(['M', -8, 0])
+        .attr({
+            'stroke': '#303030',
+            'stroke-linecap': 'round',
+            'stroke-linejoin': 'round',
+            'stroke-width': 2,
+            'zIndex': 10
+        })
+        .translate(190, 61)
+        .add(this.series[2].group);
+
+    // Stand icon
+    this.renderer.path(['M', 0, 8])
+        .attr({
+            'stroke': '#303030',
+            'stroke-linecap': 'round',
+            'stroke-linejoin': 'round',
+            'stroke-width': 2,
+            'zIndex': 10
+        })
+        .translate(190, 96)
+        .add(this.series[2].group);
+});
+
+
+</script>
+
+<script type="text/javascript">
+    load_realtime_data();
+    function load_realtime_data(){
+        console.log("everything is going well.")
+    $.ajax({
+        url:'/sensors/load_realtime/',
+        type: 'post',
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+            $("#temp").html(data['TMP']+' °C');
+            $("#hum").html(data['HUM']);
+            $("#number").html(data['NUM']);
+            $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
+            $("#light").html(data['LUM']);
+            $("#pir").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
+        },
+    });
+    setTimeout(load_realtime_data, 1000);
+};
+</script>
+
+</html>

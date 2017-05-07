@@ -17,7 +17,7 @@ import os
 # Create your views here.
 def view_home(request):
     print("Welcome Home!")
-    return render(request, 'sensors.html')
+    return render(request, 'SensorUI.html')
 
 def change_number(request, num):
     return HttpResponse('Number of people has successfully changed')
@@ -118,7 +118,7 @@ def save_test(request):
 @csrf_exempt
 def load_realtime_data(request):
     if request.method == "POST":
-        # print("request realtime data:")
+        print("request realtime data:")
         with open('realtime_data.json') as json_data:
             realtime_json = json.load(json_data)
         return HttpResponse(realtime_json, content_type='application/json')
