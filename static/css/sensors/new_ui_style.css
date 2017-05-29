@@ -89,3 +89,11 @@ hr.divider{
     font-weight: bold;
     color:#F6A623;
 }
+
+.switch-items{
+    width: 640px; /*can be in percentage also.*/
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+}

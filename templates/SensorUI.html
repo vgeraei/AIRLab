@@ -19,6 +19,9 @@
                 <h4>light Key</h4>
                 <br>
                 <hr class="divider">
+                <div class="switch-items">
+
+                </div>
 			</div>
 		</div>
 		
@@ -194,20 +197,21 @@ function callback() {
 <script type="text/javascript">
     load_realtime_data();
     function load_realtime_data(){
-        console.log("everything is going well.")
+{#        console.log("everything is going well.")#}
     $.ajax({
         url:'/sensors/load_realtime/',
         type: 'post',
         dataType: 'json',
         cache: false,
         success: function (data) {
+            console.log(data);
             $("#temp").html(data['TMP']+' °C');
             $("#hum").html(data['HUM']);
             $("#number").html(data['NUM']);
             $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
             $("#light").html(data['LUM']);
             $("#pir").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
-        },
+        }
     });
     setTimeout(load_realtime_data, 1000);
 };
