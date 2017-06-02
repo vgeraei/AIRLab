@@ -25,7 +25,7 @@ h4{
     width: 300px;
 }
 .block{
-
+    text-align: center;
     background-color: white;
     margin-bottom: 10px
 }
@@ -88,4 +88,15 @@ hr.divider{
     font-size:50px;
     font-weight: bold;
     color:#F6A623;
+}
+
+.block.temperature label{
+    vertical-align: top;
+    font-size: 50px;
+    color:RGB(244,156,54);
+}
+.block.people label{
+    display: block;
+    vertical-align: bottom;
+    font-size: 30px;
 }
