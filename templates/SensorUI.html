@@ -19,9 +19,18 @@
                 <h4>light Key</h4>
                 <br>
                 <hr class="divider">
+<<<<<<< HEAD
                 <div class="switch-items">
 
                 </div>
+=======
+                <span id="on-off-btn">
+                    <img width="52" height="36" src="{% static 'images/icons/on.svg' %}">
+                    <img width="52" height="36" src="{% static 'images/icons/off.svg' %}" style="display: none;">
+                </span>
+
+                <img id="lamp" width="99px" height="140px" src="{% static 'images/icons/lamp.svg' %}">
+>>>>>>> 8792e451ebab35c5b1e6796404248ce0dc8c1d4e
 			</div>
 		</div>
 		
@@ -55,14 +64,26 @@
                 <br>
                 <hr class="divider">
 
+<<<<<<< HEAD
                 <span id="temp"></span>
+=======
+                    <label for="temp-icon" ></label>
+                    <img id="temp-icon" src="{% static 'images/icons/temp.svg' %}">
+>>>>>>> 8792e451ebab35c5b1e6796404248ce0dc8c1d4e
 			</div>
 		
 			<div class="block people">
                 <h4>People</h4>
                 <br>
                 <hr class="divider">
+<<<<<<< HEAD
                 <label id="pir"></label>
+=======
+                <img id="people-count" src="{% static 'images/icons/people.svg' %}">
+                <label for="people-count">
+
+                </label>
+>>>>>>> 8792e451ebab35c5b1e6796404248ce0dc8c1d4e
 			</div>
 		</div>
 		
@@ -203,8 +224,12 @@ function callback() {
         dataType: 'json',
         cache: false,
         success: function (data) {
+<<<<<<< HEAD
 {#            console.log(data);#}
             $("#temp").html(data['TMP']+' °C');
+=======
+            $(".block.temperature label").html(data['TMP']+' °C');
+>>>>>>> 8792e451ebab35c5b1e6796404248ce0dc8c1d4e
 {#            $("#hum").html(data['HUM']);#}
             humidity = parseInt(data['HUM']);
             my_chart.series[0].setData([{
@@ -220,11 +245,20 @@ function callback() {
             $("#number").html(data['NUM']); //not set yet
             $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
             $("#light").html(data['LUM']);
+<<<<<<< HEAD
             $("#pir").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
         }
+=======
+            $(".block.people label").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
+        },
+>>>>>>> 8792e451ebab35c5b1e6796404248ce0dc8c1d4e
     });
     setTimeout(load_realtime_data, 1000);
 };
+
+    $("#on-off-btn").click(function(){
+        $(this).find('img').toggle();
+    });
 </script>
 
 </html>
