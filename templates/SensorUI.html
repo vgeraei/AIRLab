@@ -210,12 +210,7 @@ function callback() {
         dataType: 'json',
         cache: false,
         success: function (data) {
-<<<<<<< HEAD
-{#            console.log(data);#}
-            $("#temp").html(data['TMP']+' °C');
-=======
             $(".block.temperature label").html(data['TMP']+' °C');
->>>>>>> 8792e451ebab35c5b1e6796404248ce0dc8c1d4e
 {#            $("#hum").html(data['HUM']);#}
             humidity = parseInt(data['HUM']);
             my_chart.series[0].setData([{
@@ -231,13 +226,9 @@ function callback() {
             $("#number").html(data['NUM']); //not set yet
             $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
             $("#light").html(data['LUM']);
-<<<<<<< HEAD
-            $("#pir").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
-        }
-=======
+
             $(".block.people label").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
-        },
->>>>>>> 8792e451ebab35c5b1e6796404248ce0dc8c1d4e
+        }
     });
     setTimeout(load_realtime_data, 1000);
 };
