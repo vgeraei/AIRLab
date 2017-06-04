@@ -2,78 +2,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Informative Board</title>
-	<link rel="stylesheet" href="{% static 'css/sensors/new_ui_style.css' %}">
+    <title>Informative Board</title>
+    <link rel="stylesheet" href="{% static 'css/sensors/new_ui_style.css' %}">
 </head>
 <body>
-	<div class="main-container">
-		<div class="left-container container">
-			<div class="block humidity">
-				<h4>Humidity</h4>
-                <br>
-                <hr class="divider">
-                    <div id="container" style="margin: 0 auto; height: 230px; width: 300px;">
-                    </div>
-			</div>
-			<div class="block light-key">
-                <h4>light Key</h4>
-                <br>
-                <hr class="divider">
-                <span id="on-off-btn">
-                    <img width="52" height="36" src="{% static 'images/icons/on.svg' %}">
-                    <img width="52" height="36" src="{% static 'images/icons/off.svg' %}" style="display: none;">
+<div class="main-container">
+    <div class="left-container container">
+        <div class="block humidity">
+            <h4>Humidity</h4>
+            <br>
+            <hr class="divider">
+            <div id="container" style="margin: 0 auto; height: 230px; width: 300px;">
+            </div>
+        </div>
+        <div class="block light-key">
+            <h4>light Key</h4>
+            <br>
+            <hr class="divider">
+            <span id="on-off-btn">
+                    <img id="switch_on_button" width="52" height="36" src="{% static 'images/icons/on.svg' %}">
+                    <img id="switch_off_button" width="52" height="36" src="{% static 'images/icons/off.svg' %}" style="display: none">
                 </span>
 
-                <img id="lamp" width="99px" height="140px" src="{% static 'images/icons/lamp.svg' %}">
-			</div>
-		</div>
-		
-		<div class="middle-container container">
-			<div class="block door">
-                <h4>Door</h4>
-                <br>
-                <hr class="divider">
+            <img id="lamp" width="99px" height="140px" src="{% static 'images/icons/lamp.svg' %}">
+        </div>
+    </div>
 
-                <div class="door-state" id="door_status">
-                    Open
-                </div>
-			</div>
-			<div class="block light-info">
-                <h4>light Info</h4>
-                <br>
-                <hr class="divider">
-                <div class="light-state">
-                     <img id="light-icon" src="{% static 'images/icons/light.svg' %}">
-                     <label id="light"></label>
-                 </div>
-			</div>
-            <div class="airlab-copyright">
-               AIRLab Corporation <br> Copyright 2017
-			</div>
-		</div>
-		
-		<div class="right-container container">
-			<div class="block temperature">
-                <h4>Temperature</h4>
-                <br>
-                <hr class="divider">
+    <div class="middle-container container">
+        <div class="block door">
+            <h4>Door</h4>
+            <br>
+            <hr class="divider">
 
-                    <label for="temp-icon" ></label>
-                    <img id="temp-icon" src="{% static 'images/icons/temp.svg' %}">
-			</div>
-		
-			<div class="block people">
-                <h4>People</h4>
-                <br>
-                <hr class="divider">
-                <img id="people-count" src="{% static 'images/icons/people.svg' %}">
-                <label for="people-count">
+            <div class="door-state" id="door_status">
+                Open
+            </div>
+        </div>
+        <div class="block light-info">
+            <h4>light Info</h4>
+            <br>
+            <hr class="divider">
+            <div class="light-state">
+                <img id="light-icon" src="{% static 'images/icons/light.svg' %}">
+                <label id="light"></label>
+            </div>
+        </div>
+        <div class="airlab-copyright">
+            AIRLab Corporation <br> Copyright 2017
+        </div>
+    </div>
 
-                </label>
-			</div>
-		</div>
-		
-	</div>
+    <div class="right-container container">
+        <div class="block temperature">
+            <h4>Temperature</h4>
+            <br>
+            <hr class="divider">
+
+            <label for="temp-icon" ></label>
+            <img id="temp-icon" src="{% static 'images/icons/temp.svg' %}">
+        </div>
+
+        <div class="block people">
+            <h4>People</h4>
+            <br>
+            <hr class="divider">
+            <img id="people-count" src="{% static 'images/icons/people.svg' %}">
+            <label for="people-count">
+
+            </label>
+        </div>
+    </div>
+
+</div>
 
 </body>
 
@@ -82,156 +82,192 @@
 <script type="text/javascript" src="{% static 'sources/highcharts/modules/solid-gauge.js' %}"></script>
 <script type="text/javascript" src="{% static 'sources/jquery.js' %}"></script>
 <script type="text/javascript">
-
+    var lights_updated_time = 0;
+    function switch_lights() {
+        return function inner_switch_lights() {
+            if ($("#switch_on_button").css('display', 'block') == true) {
+                $.ajax({
+                    url: '/sensors/lights_on/',
+                    type: 'get',
+                    success: function (data) {
+                        // console.log("1");
+                        lights_updated_time = new Date();
+                        $("#switch_on_button").css('display', 'none');
+                        $("#switch_off_button").css('display', 'block');
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '/sensors/lights_off/',
+                    type: 'get',
+                    success: function (data) {
+                        lights_updated_time = new Date();
+                        // console.log("0");
+                        $("#switch_on_button").css('display', 'block');
+                        $("#switch_off_button").css('display', 'none');
+                    }
+                });
+            }
+        }
+    }
     var humidity = 10;
     my_chart = Highcharts.chart('container', {
 
-    chart: {
-        type: 'solidgauge',
-        marginTop: 0
-    },
+            chart: {
+                type: 'solidgauge',
+                marginTop: 0
+            },
 
-    title: {
-        text: null,
-        style: {
-            fontSize: '14px'
-        }
-    },
+            title: {
+                text: null,
+                style: {
+                    fontSize: '14px'
+                }
+            },
 
-    credits: {
-      enabled: false
-  },
-    tooltip: {
-        enabled: true,
-        borderWidth: 0,
-        backgroundColor: 'none',
-        shadow: false,
-        style: {
-            fontSize: '22px'
-        },
-        pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}%</span>',
-        positioner: function (labelWidth) {
-            return {
-                x: 150 - labelWidth / 2,
-                y: 65
-            };
-        }
-    },
-
-    pane: {
-        startAngle: 0,
-        endAngle: 360,
-        background: [{ // Track for Humidity
-            outerRadius: '112%',
-            innerRadius: '88%',
-            backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.3).get(),
-            borderWidth: 0
-        }]
-    },
-
-    yAxis: {
-        min: 0,
-        max: 100,
-        lineWidth: 0,
-        tickPositions: []
-    },
-
-    plotOptions: {
-
-        solidgauge: {
-            dataLabels: {
+            credits: {
                 enabled: false
             },
-            linecap: 'round',
-            stickyTracking: false,
-            rounded: true
-        }
-    },
+            tooltip: {
+                enabled: true,
+                borderWidth: 0,
+                backgroundColor: 'none',
+                shadow: false,
+                style: {
+                    fontSize: '22px'
+                },
+                pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}%</span>',
+                positioner: function (labelWidth) {
+                    return {
+                        x: 150 - labelWidth / 2,
+                        y: 65
+                    };
+                }
+            },
 
-    series: [{
-        name: 'Humidity',
-        borderColor: Highcharts.getOptions().colors[0],
-        data: [{
-            color: Highcharts.getOptions().colors[0],
-            radius: '112%',
-            innerRadius: '88%',
-            y: humidity
-        }]
-    }]
-},
+            pane: {
+                startAngle: 0,
+                endAngle: 360,
+                background: [{ // Track for Humidity
+                    outerRadius: '112%',
+                    innerRadius: '88%',
+                    backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.3).get(),
+                    borderWidth: 0
+                }]
+            },
 
-/**
- * In the chart load callback, add icons on top of the circular shapes
- */
-function callback() {
+            yAxis: {
+                min: 0,
+                max: 100,
+                lineWidth: 0,
+                tickPositions: []
+            },
 
-    this.renderer.path(['M', -8, 0])
-        .attr({
-            'stroke': '#303030',
-            'stroke-linecap': 'round',
-            'stroke-linejoin': 'round',
-            'stroke-width': 2,
-            'zIndex': 10
-        })
-        .translate(190, 26)
-        .add(this.series[0].group);
+            plotOptions: {
 
-    // Exercise icon
-    this.renderer.path(['M', -8, 0])
-        .attr({
-            'stroke': '#303030',
-            'stroke-linecap': 'round',
-            'stroke-linejoin': 'round',
-            'stroke-width': 2,
-            'zIndex': 10
-        })
-        .translate(190, 61)
-        .add(this.series[0].group);
+                solidgauge: {
+                    dataLabels: {
+                        enabled: false
+                    },
+                    linecap: 'round',
+                    stickyTracking: false,
+                    rounded: true
+                }
+            },
 
-    // Stand icon
-    this.renderer.path(['M', 0, 8])
-        .attr({
-            'stroke': '#303030',
-            'stroke-linecap': 'round',
-            'stroke-linejoin': 'round',
-            'stroke-width': 2,
-            'zIndex': 10
-        })
-        .translate(190, 96)
-        .add(this.series[0].group);
-});
+            series: [{
+                name: 'Humidity',
+                borderColor: Highcharts.getOptions().colors[0],
+                data: [{
+                    color: Highcharts.getOptions().colors[0],
+                    radius: '112%',
+                    innerRadius: '88%',
+                    y: humidity
+                }]
+            }]
+        },
+
+        /**
+         * In the chart load callback, add icons on top of the circular shapes
+         */
+        function callback() {
+
+            this.renderer.path(['M', -8, 0])
+                .attr({
+                    'stroke': '#303030',
+                    'stroke-linecap': 'round',
+                    'stroke-linejoin': 'round',
+                    'stroke-width': 2,
+                    'zIndex': 10
+                })
+                .translate(190, 26)
+                .add(this.series[0].group);
+
+            // Exercise icon
+            this.renderer.path(['M', -8, 0])
+                .attr({
+                    'stroke': '#303030',
+                    'stroke-linecap': 'round',
+                    'stroke-linejoin': 'round',
+                    'stroke-width': 2,
+                    'zIndex': 10
+                })
+                .translate(190, 61)
+                .add(this.series[0].group);
+
+            // Stand icon
+            this.renderer.path(['M', 0, 8])
+                .attr({
+                    'stroke': '#303030',
+                    'stroke-linecap': 'round',
+                    'stroke-linejoin': 'round',
+                    'stroke-width': 2,
+                    'zIndex': 10
+                })
+                .translate(190, 96)
+                .add(this.series[0].group);
+        });
 
     load_realtime_data();
     function load_realtime_data(){
-{#        console.log("everything is going well.")#}
-    $.ajax({
-        url:'/sensors/load_realtime/',
-        type: 'post',
-        dataType: 'json',
-        cache: false,
-        success: function (data) {
-            $(".block.temperature label").html(data['TMP']+' °C');
-{#            $("#hum").html(data['HUM']);#}
-            humidity = parseInt(data['HUM']);
-            my_chart.series[0].setData([{
-            color: Highcharts.getOptions().colors[0],
-            radius: '112%',
-            innerRadius: '88%',
-            y: humidity
-        }], false);
+        $.ajax({
+            url:'/sensors/load_realtime/',
+            type: 'post',
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                $(".block.temperature label").html(data['TMP']+' °C');
+                {#            $("#hum").html(data['HUM']);#}
+                humidity = parseInt(data['HUM']);
+                my_chart.series[0].setData([{
+                    color: Highcharts.getOptions().colors[0],
+                    radius: '112%',
+                    innerRadius: '88%',
+                    y: humidity
+                }], false);
 
-           my_chart.redraw();
+                my_chart.redraw();
 
 
-            $("#number").html(data['NUM']); //not set yet
-            $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
-            $("#light").html(data['LUM']);
+                $("#number").html(data['NUM']); //not set yet
+                $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
+                $("#light").html(data['LUM']);
 
-            $(".block.people label").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
-        }
-    });
-    setTimeout(load_realtime_data, 1000);
-};
+                $(".block.people label").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
+
+                if ( Math.floor((new Date() - lights_updated_time)/1000) > 3 ) {
+                    if(parseInt(data['LST'])){
+                        $("#switch_on_button").css('display', 'inline-block');
+                        $("#switch_off_button").css('display', 'none');
+                    }else{
+                        $("#switch_on_button").css('display', 'none');
+                        $("#switch_off_button").css('display', 'inline-block');
+                    }
+                }
+            }
+        });
+        setTimeout(load_realtime_data, 1000);
+    };
 
     $("#on-off-btn").click(function(){
         $(this).find('img').toggle();

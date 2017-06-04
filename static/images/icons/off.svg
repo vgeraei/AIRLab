@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="31px" viewBox="0 0 50 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Float</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0.5784314" y="0.970588235" width="28.4509804" height="28.4509804"></rect>
+        <circle id="path-3" cx="14.8039216" cy="15.1960784" r="13.7254902"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Float" transform="translate(25.000000, 15.500000) scale(-1, -1) translate(-25.000000, -15.500000) ">
+            <g id="Page-1">
+                <g id="iPad-Landscape">
+                    <g id="Light-Key">
+                        <g id="Float">
+                            <rect id="Green-Background" fill="#9B9B9B" fill-rule="nonzero" opacity="0.679970562" x="0" y="0" width="50" height="30.3921569" rx="15.1960784"></rect>
+                            <g id="Knob" transform="translate(20.000000, 0.000000)">
+                                <g id="path-1-link" transform="translate(1.000000, 1.000000)" fill-rule="nonzero" fill="#000000">
+                                    <circle id="path-1" cx="13.8039216" cy="14.1960784" r="13.7254902"></circle>
+                                </g>
+                                <g id="path-1-link" transform="translate(1.000000, 1.000000)" fill="#FFFFFF">
+                                    <circle id="path-1" cx="13.8039216" cy="14.1960784" r="13.7254902"></circle>
+                                </g>
+                                <g id="path-1-link">
+                                    <g id="path-1-Clipped">
+                                        <mask id="mask-2" fill="white">
+                                            <use xlink:href="#path-1"></use>
+                                        </mask>
+                                        <g id="Rectangle-path"></g>
+                                        <circle id="path-1" stroke-opacity="0.1" stroke="#000000" mask="url(#mask-2)" cx="14.8039216" cy="15.1960784" r="13.7254902"></circle>
+                                        <mask id="mask-4" fill="white">
+                                            <use xlink:href="#path-3"></use>
+                                        </mask>
+                                        <g id="path-1"></g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
