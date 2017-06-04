@@ -31,7 +31,7 @@
                 <br>
                 <hr class="divider">
 
-                <div class="door-state">
+                <div class="door-state" id="door_status">
                     Open
                 </div>
 			</div>
@@ -41,7 +41,7 @@
                 <hr class="divider">
                 <div class="light-state">
                      <img id="light-icon" src="{% static 'images/icons/light.svg' %}">
-                     <label>85%</label>
+                     <label id="light"></label>
                  </div>
 			</div>
             <div class="airlab-copyright">
@@ -55,13 +55,14 @@
                 <br>
                 <hr class="divider">
 
-                <span id="temp"> 23 &#8451;</span>
+                <span id="temp"></span>
 			</div>
 		
 			<div class="block people">
                 <h4>People</h4>
                 <br>
                 <hr class="divider">
+                <label id="pir"></label>
 			</div>
 		</div>
 		
@@ -72,9 +73,11 @@
 <script type="text/javascript" src="{% static 'sources/highcharts/highcharts.js' %}"></script>
 <script type="text/javascript" src="{% static 'sources/highcharts/highcharts-more.js' %}"></script>
 <script type="text/javascript" src="{% static 'sources/highcharts/modules/solid-gauge.js' %}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'sources/jquery.js' %}"></script>
 <script type="text/javascript">
-    Highcharts.chart('container', {
+
+    var humidity = 10;
+    my_chart = Highcharts.chart('container', {
 
     chart: {
         type: 'solidgauge',
@@ -145,7 +148,7 @@
             color: Highcharts.getOptions().colors[0],
             radius: '112%',
             innerRadius: '88%',
-            y: 80
+            y: humidity
         }]
     }]
 },
@@ -164,7 +167,7 @@ function callback() {
             'zIndex': 10
         })
         .translate(190, 26)
-        .add(this.series[2].group);
+        .add(this.series[0].group);
 
     // Exercise icon
     this.renderer.path(['M', -8, 0])
@@ -176,7 +179,7 @@ function callback() {
             'zIndex': 10
         })
         .translate(190, 61)
-        .add(this.series[2].group);
+        .add(this.series[0].group);
 
     // Stand icon
     this.renderer.path(['M', 0, 8])
@@ -188,13 +191,9 @@ function callback() {
             'zIndex': 10
         })
         .translate(190, 96)
-        .add(this.series[2].group);
+        .add(this.series[0].group);
 });
 
-
-</script>
-
-<script type="text/javascript">
     load_realtime_data();
     function load_realtime_data(){
 {#        console.log("everything is going well.")#}
@@ -204,10 +203,21 @@ function callback() {
         dataType: 'json',
         cache: false,
         success: function (data) {
-            console.log(data);
+{#            console.log(data);#}
             $("#temp").html(data['TMP']+' °C');
-            $("#hum").html(data['HUM']);
-            $("#number").html(data['NUM']);
+{#            $("#hum").html(data['HUM']);#}
+            humidity = parseInt(data['HUM']);
+            my_chart.series[0].setData([{
+            color: Highcharts.getOptions().colors[0],
+            radius: '112%',
+            innerRadius: '88%',
+            y: humidity
+        }], false);
+
+           my_chart.redraw();
+
+
+            $("#number").html(data['NUM']); //not set yet
             $("#door_status").html(((parseInt(data['DST']))?("Open"):("Closed")));
             $("#light").html(data['LUM']);
             $("#pir").html(((parseInt(data['PIR']))?("Someone in the room."):("The room is empty.")));
