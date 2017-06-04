@@ -93,7 +93,7 @@
                         // console.log("1");
                         lights_updated_time = new Date();
                         $("#switch_on_button").css('display', 'none');
-                        $("#switch_off_button").css('display', 'block');
+                        $("#switch_off_button").css('display', 'inline-block');
                     }
                 });
             } else {
@@ -103,7 +103,7 @@
                     success: function (data) {
                         lights_updated_time = new Date();
                         // console.log("0");
-                        $("#switch_on_button").css('display', 'block');
+                        $("#switch_on_button").css('display', 'inline-block');
                         $("#switch_off_button").css('display', 'none');
                     }
                 });
